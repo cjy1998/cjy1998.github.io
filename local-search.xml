@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Hexo常见命令</title>
+    <link href="/2021/01/04/Hexo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/"/>
+    <url>/2021/01/04/Hexo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<p>常见的hexo命令</p><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gauss">$ hexo <span class="hljs-keyword">new</span> [layout] &lt;<span class="hljs-built_in">title</span>&gt;<br></code></pre></td></tr></table></figure><p>新建一篇文章。如果没有设置 <code>layout</code> 的话，默认使用 <a href="https://hexo.io/zh-cn/docs/configuration">_config.yml</a> 中的 <code>default_layout</code> 参数代替。如果标题包含空格的话，请使用引号括起来。</p><a id="more"></a><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>hexo g<br></code></pre></td></tr></table></figure><p>生成静态文件。</p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>hexo s<br></code></pre></td></tr></table></figure><p>启动服务器。默认情况下，访问网址为： <code>http://localhost:4000/</code>。</p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>hexo d<br></code></pre></td></tr></table></figure><p>部署网站，部署之前预先生成静态文件。</p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>hexo clean<br></code></pre></td></tr></table></figure><p>清除缓存文件 (<code>db.json</code>) 和已生成的静态文件 (<code>public</code>)。</p><p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">$ hexo <span class="hljs-built_in">version</span><br></code></pre></td></tr></table></figure><p>显示 Hexo 版本。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Hexo的常见命令</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>article  title</title>
     <link href="/2020/12/30/article-title/"/>
     <url>/2020/12/30/article-title/</url>
