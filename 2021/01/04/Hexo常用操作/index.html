@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="��">
   <meta name="keywords" content="">
-  <title>Hexo常见命令 - �����ƶ�����ң��</title>
+  <title>Hexo基本操作 - �����ƶ�����ң��</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hexo常见命令">
+            <span class="h2" id="subtitle" title="Hexo基本操作">
               
             </span>
 
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      179 字
+      472 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      5
        分钟
     </span>
   
@@ -224,14 +224,13 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hexo常见命令</h1>
+            <h1 style="display: none">Hexo基本操作</h1>
             
             <div class="markdown-body">
-              <p>常见的hexo命令</p>
+              <h1 id="常见的hexo命令"><a href="#常见的hexo命令" class="headerlink" title="常见的hexo命令"></a>常见的hexo命令</h1><a id="more"></a>
+
 <figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gauss">$ hexo <span class="hljs-keyword">new</span> [layout] &lt;<span class="hljs-built_in">title</span>&gt;<br></code></pre></td></tr></table></figure>
 <p>新建一篇文章。如果没有设置 <code>layout</code> 的话，默认使用 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">_config.yml</a> 中的 <code>default_layout</code> 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
-<a id="more"></a>
-
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>hexo g<br></code></pre></td></tr></table></figure>
 <p>生成静态文件。</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>hexo s<br></code></pre></td></tr></table></figure>
@@ -243,17 +242,83 @@
 <p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">$ hexo <span class="hljs-built_in">version</span><br></code></pre></td></tr></table></figure>
 <p>显示 Hexo 版本。</p>
+<h1 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h1><p>Front-matter 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量，举例来说：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: Hello World<br>date: 2013/7/13 20:46:25<br>---<br></code></pre></td></tr></table></figure>
+<p>以下是预先定义的参数，可在模板中使用这些参数值并加以利用。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>layout</td>
+<td>布局</td>
+<td>[<code>config.default_layout</code>]</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td>文章的文件名</td>
+</tr>
+<tr>
+<td>date</td>
+<td>建立时间</td>
+<td>文章建立时间</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>更新时间</td>
+<td>文件更新时间</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>开启文章的评论功能</td>
+<td>true</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>标签（不适用于分页）</td>
+<td></td>
+</tr>
+<tr>
+<td>categories</td>
+<td>分类（不适用于分页）</td>
+<td></td>
+</tr>
+<tr>
+<td>permalink</td>
+<td>覆盖文章网址</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="分类和标签"><a href="#分类和标签" class="headerlink" title="分类和标签"></a>分类和标签</h2><p>分类具有顺序性和层次性，而标签没有顺序和层次。</p>
+<h3 id="分类方法"><a href="#分类方法" class="headerlink" title="分类方法"></a>分类方法</h3><p>例如:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">categories:<br><span class="hljs-bullet">  -</span> Diary<br><span class="hljs-bullet">  -</span> Life<br></code></pre></td></tr></table></figure>
+<p>会使分类<code>Life</code>成为<code>Diary</code>的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。</p>
+<p>如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">categories:<br><span class="hljs-bullet">-</span> [Diary, PlayStation]<br><span class="hljs-bullet">-</span> [Diary, Games]<br><span class="hljs-bullet">-</span> [Life]<br></code></pre></td></tr></table></figure>
+<p>此时这篇文章同时包括三个分类： <code>PlayStation</code> 和 <code>Games</code> 分别都是父分类 <code>Diary</code> 的子分类，同时 <code>Life</code> 是一个没有子分类的分类。</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Hexo/">Hexo</a>
+                    
+                  </div>
+                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Hexo%E7%9A%84%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">Hexo的常见命令</a>
+                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
                     
                   </div>
                 

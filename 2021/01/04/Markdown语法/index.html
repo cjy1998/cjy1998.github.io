@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      327 字
+      577 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      6
        分钟
     </span>
   
@@ -274,13 +274,35 @@
 <h2 id="五、图片"><a href="#五、图片" class="headerlink" title="五、图片"></a>五、图片</h2><p>语法：</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">![图片alt](图片地址 <span class="hljs-string">&#x27;&#x27;</span>图片titl<span class="hljs-string">e&#x27;&#x27;</span>)<br>图片alt就是显示在图片下面的文字，相当于对图片内容的解释。<br>图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加<br></code></pre></td></tr></table></figure>
 <p>示例：</p>
+<p><img src="https://raw.githubusercontent.com/cjy1998/imagesbed/main/img/img3.jpg" srcset="/img/loading.gif" alt="github图床图片"></p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">！[<span class="hljs-string">效果图</span>](<span class="hljs-link">/images/img1.jpg&quot;效果图&quot;</span>)<br></code></pre></td></tr></table></figure>
-<p>！<a href="/images/img1.jpg%22%E6%95%88%E6%9E%9C%E5%9B%BE%22">效果图</a></p>
+<p><img src="E:\cjy1998.github.io\source\images\img1.jpg" srcset="/img/loading.gif"加油少年"" alt="效果图"></p>
+<p>markdown格式追求的是简单、多平台统一。那么图片的存储就是一个问题，需要用图床，提供统一的外链，这样就不用在不同的平台去处理图片的问题了。才能做到书写一次，各处使用。</p>
+<h3 id="六、超链接"><a href="#六、超链接" class="headerlink" title="六、超链接"></a>六、超链接</h3><p>语法：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">超链接名</span>](<span class="hljs-link">超链接地址 &quot;超链接title&quot;</span>)<br>title可加可不加<br></code></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">百度</span>](<span class="hljs-link">http://baidu.com</span>)<br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><a target="_blank" rel="noopener" href="http://baidu.com/">百度</a></p>
+<p>注：Markdown本身语法不支持链接在新页面中打开，如果想要在新页面中打开的话可以用html语言的a标签代替。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;超链接地址&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span>超链接名<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><br>示例<br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://www.jianshu.com/u/1f5ac0cf6a8b&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span>简书<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><a href="https://www.jianshu.com/u/1f5ac0cf6a8b" target="_blank">简书</a></p>
+<h2 id="七、列表"><a href="#七、列表" class="headerlink" title="七、列表"></a>七、列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>语法：</p>
+<p>无序列表用-+*任何一种都可以</p>
+<p>示例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 列表内容<br><span class="hljs-bullet">+</span> 列表内容<br><span class="hljs-bullet">*</span> 列表内容<br><br>注意：- + <span class="hljs-emphasis">* 跟内容之间都要有一个空格</span><br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Markdown/">Markdown</a>
+                    
+                  </div>
                 
                 
                   <div class="post-meta">
@@ -303,8 +325,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/01/04/Hexo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">
-                        <span class="hidden-mobile">Hexo常见命令</span>
+                      <a href="/2021/01/04/Hexo%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">
+                        <span class="hidden-mobile">Hexo基本操作</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
