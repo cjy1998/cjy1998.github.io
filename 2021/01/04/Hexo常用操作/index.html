@@ -351,15 +351,30 @@
               <article class="comments" id="comments">
                 
                 
-  <div id="twikoo"></div>
+  <div id="vcomments"></div>
   <script type="text/javascript">
-    Fluid.utils.waitElementVisible('twikoo', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@0.1.15/dist/twikoo.all.min.js', function () {
-        twikoo.init({ envId: 'chenjianyan-0g4xh843d799f42c' })
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "icBvU7spvG0iawymtNOxesQq-gzGzoHsz",
+          app_key: "Hc7KXd3ix4QaO9Pa5aPeKpAv",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
     });
   </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
 
 
               </article>
