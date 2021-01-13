@@ -17,9 +17,25 @@
   <meta name="description" content="">
   <meta name="author" content="chenjian">
   <meta name="keywords" content="">
-  <title>标签 - c语言 - Fly</title>
+  <title>c语言day2 - Fly</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -141,22 +157,55 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/images/img3.jpg') no-repeat center center;
+         style="background: url('/images/img13.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="标签 - c语言">
+            <span class="h2" id="subtitle" title="c语言day2">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-13 18:12" pubdate>
+        2021年1月13日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      418 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -165,46 +214,132 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 2 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/01/13/c%E8%AF%AD%E8%A8%80day2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">c语言day2</span>
-      <time style="float: right;">01-13</time>
-    </a>
-  
-    
-    <a href="/2021/01/05/c%E8%AF%AD%E8%A8%80day1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">c语言day1</span>
-      <time style="float: right;">01-05</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">c语言day2</h1>
+            
+            <div class="markdown-body">
+              <h1 id="printf-scanf-if-else-for-。"><a href="#printf-scanf-if-else-for-。" class="headerlink" title="printf(),scanf(),if else,for()。"></a><code>printf()</code>,<code>scanf</code>(),<code>if else</code>,<code>for()</code>。</h1><a id="more"></a>
 
+<h2 id="printf"><a href="#printf" class="headerlink" title="printf()"></a>printf()</h2><p>函数<code>printf()</code>的一般调用格式为：</p>
+<h5 id="printf-格式控制字符串，输出参数1，输出参数2…"><a href="#printf-格式控制字符串，输出参数1，输出参数2…" class="headerlink" title="printf(格式控制字符串，输出参数1，输出参数2…);"></a>printf(格式控制字符串，输出参数1，输出参数2…);</h5><p>格式控制字符串需要用双引号括起来，表示输出的格式；而输出参数则是一些要输出的数据，这些数据可以是<code>变量</code>、<code>常量</code>、<code>表达式</code>。</p>
+<h4 id="格式控制字符串"><a href="#格式控制字符串" class="headerlink" title="格式控制字符串"></a>格式控制字符串</h4><p>格式控制字符串包含两种信息：格式控制说明和普通字符。例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;整数=%d,浮点数=%f\n&quot;</span>,x,y);<br></code></pre></td></tr></table></figure>
+<p>输出时普通字符会原样输出，%d和%f会分别输出x和y的值。格式化控制说明其类型、个数和位置是一一对应的关系。</p>
+<p>在输出格式控制说明中，可以加宽度限定词，指定数据的输出宽度。例如，整型数据的格式控制说明%md，指定了数据的输出宽度为m(包括符号位)。实型数据的输出格式控制说明%m.nf，指定输出浮点型数据时保留n位小数，且输出宽度是m。</p>
+<h2 id="scanf"><a href="#scanf" class="headerlink" title="scanf()"></a>scanf()</h2><p>函数<code>scanf()</code>的一般调用格式为：</p>
+<h5 id="scanf-格式控制字符串，输出参数1，输出参数2…"><a href="#scanf-格式控制字符串，输出参数1，输出参数2…" class="headerlink" title="scanf(格式控制字符串，输出参数1，输出参数2…);"></a>scanf(格式控制字符串，输出参数1，输出参数2…);</h5><p>格式控制字符串表示输入的格式，输入参数是变量地址（变量名前加&amp;）。例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">int</span> x;<br><span class="hljs-keyword">double</span> y;<br><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d,%lf&quot;</span>,x,y);<br></code></pre></td></tr></table></figure>
+<p>与<code>prinft()</code>不同的格式控制字符，在<code>scanf()</code>函数中float型数据用%f,double类型用%lf。而在<code>printf()</code>中浮点数类型都用%f。两者的共同之处是int型数据都用%d。</p>
+<h2 id="if-else"><a href="#if-else" class="headerlink" title="if  else"></a>if  else</h2><p><code>if-else</code>的一般形式为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span>(表达式)<br>语句<span class="hljs-number">1</span>;<br><span class="hljs-keyword">else</span><br>语句<span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
 
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c%E8%AF%AD%E8%A8%80/">c语言</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/c%E8%AF%AD%E8%A8%80/">c语言</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/06/pythonday2/">
+                        <span class="hidden-mobile">pythonday2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "icBvU7spvG0iawymtNOxesQq-gzGzoHsz",
+          app_key: "Hc7KXd3ix4QaO9Pa5aPeKpAv",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -308,9 +443,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
