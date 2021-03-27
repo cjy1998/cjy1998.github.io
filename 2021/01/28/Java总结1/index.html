@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="chenjian">
   <meta name="keywords" content="">
-  <title>c语言day2 - Fly</title>
+  <title>Java总结1 - Fly</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="c语言day2">
+            <span class="h2" id="subtitle" title="Java总结1">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-13 18:12" pubdate>
-        2021年1月13日 晚上
+      <time datetime="2021-01-28 14:05" pubdate>
+        2021年1月28日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      418 字
+      748 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      7
        分钟
     </span>
   
@@ -224,43 +224,41 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">c语言day2</h1>
+            <h1 style="display: none">Java总结1</h1>
             
             <div class="markdown-body">
-              <h1 id="printf-scanf-if-else-for-。"><a href="#printf-scanf-if-else-for-。" class="headerlink" title="printf(),scanf(),if else,for()。"></a><code>printf()</code>,<code>scanf</code>(),<code>if else</code>,<code>for()</code>。</h1><a id="more"></a>
-
-<h2 id="printf"><a href="#printf" class="headerlink" title="printf()"></a>printf()</h2><p>函数<code>printf()</code>的一般调用格式为：</p>
-<h5 id="printf-格式控制字符串，输出参数1，输出参数2…"><a href="#printf-格式控制字符串，输出参数1，输出参数2…" class="headerlink" title="printf(格式控制字符串，输出参数1，输出参数2…);"></a>printf(格式控制字符串，输出参数1，输出参数2…);</h5><p>格式控制字符串需要用双引号括起来，表示输出的格式；而输出参数则是一些要输出的数据，这些数据可以是<code>变量</code>、<code>常量</code>、<code>表达式</code>。</p>
-<h4 id="格式控制字符串"><a href="#格式控制字符串" class="headerlink" title="格式控制字符串"></a>格式控制字符串</h4><p>格式控制字符串包含两种信息：格式控制说明和普通字符。例：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;整数=%d,浮点数=%f\n&quot;</span>,x,y);<br></code></pre></td></tr></table></figure>
-<p>输出时普通字符会原样输出，%d和%f会分别输出x和y的值。格式化控制说明其类型、个数和位置是一一对应的关系。</p>
-<p>在输出格式控制说明中，可以加宽度限定词，指定数据的输出宽度。例如，整型数据的格式控制说明%md，指定了数据的输出宽度为m(包括符号位)。实型数据的输出格式控制说明%m.nf，指定输出浮点型数据时保留n位小数，且输出宽度是m。</p>
-<h2 id="scanf"><a href="#scanf" class="headerlink" title="scanf()"></a>scanf()</h2><p>函数<code>scanf()</code>的一般调用格式为：</p>
-<h5 id="scanf-格式控制字符串，输出参数1，输出参数2…"><a href="#scanf-格式控制字符串，输出参数1，输出参数2…" class="headerlink" title="scanf(格式控制字符串，输出参数1，输出参数2…);"></a>scanf(格式控制字符串，输出参数1，输出参数2…);</h5><p>格式控制字符串表示输入的格式，输入参数是变量地址（变量名前加&amp;）。例：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">int</span> x;<br><span class="hljs-keyword">double</span> y;<br><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d,%lf&quot;</span>,x,y);<br></code></pre></td></tr></table></figure>
-<p>与<code>prinft()</code>不同的格式控制字符，在<code>scanf()</code>函数中float型数据用%f,double类型用%lf。而在<code>printf()</code>中浮点数类型都用%f。两者的共同之处是int型数据都用%d。</p>
-<h2 id="if-else"><a href="#if-else" class="headerlink" title="if  else"></a>if  else</h2><p><code>if-else</code>的一般形式为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span>(表达式)<br>语句<span class="hljs-number">1</span>;<br><span class="hljs-keyword">else</span><br>语句<span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
+              <h2 id="1、什么是多态性？什么是虚拟方法的调用？"><a href="#1、什么是多态性？什么是虚拟方法的调用？" class="headerlink" title="1、什么是多态性？什么是虚拟方法的调用？"></a>1、什么是多态性？什么是虚拟方法的调用？</h2><p>对象的多态性，父类的引用指向子类的对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">Person p = <span class="hljs-keyword">new</span> Man();<br>p.eat();<br></code></pre></td></tr></table></figure>
+<p>调用方法时，编译时看左边，运行时看右边。</p>
+<h2 id="2、一个类只有一个直接父类，一个父类可以有多个父类。子类能直接获取父类的父类的结构，子类可以获取父类中private权限的属性。"><a href="#2、一个类只有一个直接父类，一个父类可以有多个父类。子类能直接获取父类的父类的结构，子类可以获取父类中private权限的属性。" class="headerlink" title="2、一个类只有一个直接父类，一个父类可以有多个父类。子类能直接获取父类的父类的结构，子类可以获取父类中private权限的属性。"></a>2、一个类只有一个直接父类，一个父类可以有多个父类。子类能直接获取父类的父类的结构，子类可以获取父类中private权限的属性。</h2><h2 id="3、方法的重写（override-overwrite）的具体规则有哪些？"><a href="#3、方法的重写（override-overwrite）的具体规则有哪些？" class="headerlink" title="3、方法的重写（override/overwrite）的具体规则有哪些？"></a>3、方法的重写（override/overwrite）的具体规则有哪些？</h2><p>Overload是重载的意思，表示在同一个类中，允许存在一个以上的同名函数，只要他们的参数个数或者参bai数类型不同即可。Override是覆盖的意思，也就是重写，它与返回值类型无关，只看参数列表。</p>
+<p>两者不同主要体现在:</p>
+<p>1，目的</p>
+<p>overload用于增加程序的可读性(做法不同,但是做的同一事情)。  override用于提供其超级类已经提供的方法的特定实现。  </p>
+<p>2，范围</p>
+<p>overload 在相同的类范围内内执行。  override发生在两类具有继承（继承）的关系。</p>
+<p>3， 参数 </p>
+<p>overload参数必须不同。  override参数必须相同。 </p>
+<p>4，多态性</p>
+<p>overload 静态多态,调用的函数在编译时被选中。  override 是运行时多态性的。 </p>
+<p>5，返回类型</p>
+<p>overload中可以相同或不同。但你必须改变参数。  override必须是相同的或协变的。</p>
+<h3 id="具体规则"><a href="#具体规则" class="headerlink" title="具体规则"></a>具体规则</h3><p>override（重写，覆盖） （1）方法名、参数、<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=%E8%BF%94%E5%9B%9E%E5%80%BC&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao">返回值</a>相同。 （2）子类方法不能缩小父类方法的访问权限。 （3）子类方法不能抛出比父类方法更多的异常(但子类方法可以不抛出异常)。 （4）存在于父类和子类之间。 （5）方法被定义为final不能被重写。 （6）被覆盖的方法不能为private，否则在其子类中只是新定义了一个方法，并没有对其进行覆盖。</p>
+<p>overload（重载，过载） （1）参数类型、个数、顺序至少有一个不相同。 （2）不能重载只有<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=%E8%BF%94%E5%9B%9E%E5%80%BC&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao">返回值</a>不同的方法名。 （3）针对于一个类而言。 （4）不能通过访问权限、返回类型、抛出的异常进行重载； （5）方法的异常类型和数目不会对重载造成影响；</p>
+<p>override应用中，最熟悉的覆盖就是对接口方法的实现，在接口中一般只是对方法进行了声明，而我们在实现时，就需要实现接口声明的所有方法。 除了这个典型的用法以外，我们在继承中也可能会在子类覆盖父类中的方法。</p>
+<h3 id="4、super调用构造器，有哪些具体的注意点？"><a href="#4、super调用构造器，有哪些具体的注意点？" class="headerlink" title="4、super调用构造器，有哪些具体的注意点？"></a>4、super调用构造器，有哪些具体的注意点？</h3><p>this(形参列表)：本类重载的其他构造器；</p>
+<p>super(形参列表)：调用父类中指定的构造器；</p>
+<p>俩个都必须放在第一行，只能选择一个。如果不写，默认Super空参。</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c%E8%AF%AD%E8%A8%80/">c语言</a>
-                    
-                  </div>
-                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/c%E8%AF%AD%E8%A8%80/">c语言</a>
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
                     
                   </div>
                 
@@ -273,9 +271,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/01/28/Java%E6%80%BB%E7%BB%931/">
+                      <a href="/2021/03/27/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java总结1</span>
+                        <span class="hidden-mobile">JavaScript学习笔记1</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -283,8 +281,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/01/06/pythonday2/">
-                        <span class="hidden-mobile">pythonday2</span>
+                      <a href="/2021/01/13/c%E8%AF%AD%E8%A8%80day2/">
+                        <span class="hidden-mobile">c语言day2</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
