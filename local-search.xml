@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>JavaScript学习笔记2</title>
+    <link href="/2021/03/27/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/"/>
+    <url>/2021/03/27/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/</url>
+    
+    <content type="html"><![CDATA[<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><a id="more"></a><h2 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.onload = intAll;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">intAll</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> ans = prompt(<span class="hljs-string">&quot;Enter a number&quot;</span>,<span class="hljs-string">&quot;&quot;</span>);<br>    <span class="hljs-keyword">try</span>&#123;<br>        <span class="hljs-comment">/*我们要关注 3 种情况：根本没有输入；用户输入了某些内容，但不是数字；输入的是数字，但它是负数（因为负数的平方根是虚数，这超出了这个示例的范围） 。如果 !ans 是 true ，就意味着用户没有输入任何内容。内置的 isNaN() 方法检查传递给它的参数是否“不是数字（Not a Number） ” 。如果isNaN() 返回 true ，就说明输入的内容是无效的。如果 ans 小于 0，它就是负数。对于以上任何情况，都希望抛出一个错误，指出“Not a valid number（不是有效的数字） ” 。当抛出错误之后，JavaScript 跳出try 块并寻找对应的 catch 语句。因此， try 块中其余的代码都被跳过。 */</span><br>        <br>        <span class="hljs-keyword">if</span> (!ans||<span class="hljs-built_in">isNaN</span>(ans)||ans&lt;<span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;Not a number&quot;</span>);<br>        &#125;<br>        <span class="hljs-comment">//如果输入了有效的内容，就显示平方根</span><br>        alert(<span class="hljs-string">&quot;The square root of&quot;</span>+ans+<span class="hljs-string">&quot;is&quot;</span>+<span class="hljs-built_in">Math</span>.sqrt(ans));<br>    &#125;<br>    <span class="hljs-keyword">catch</span>(errMsg)&#123;<br>        alert(errMsg.message);<br>    &#125;<br>    <span class="hljs-comment">/*还有一个可选部分：最后的 &#123;&#125; 块。这个部分放在 catch 后面，无论 try 块是否抛出错误，这里</span><br><span class="hljs-comment">包含的代码都应该执行。  */</span><br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>JavaScript</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JavaScript学习笔记1</title>
     <link href="/2021/03/27/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"/>
     <url>/2021/03/27/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</url>
