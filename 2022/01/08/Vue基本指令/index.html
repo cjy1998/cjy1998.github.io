@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="chenjian">
   <meta name="keywords" content="">
-  <title>JavaScript学习笔记2 - Fly</title>
+  <title>Vue基本指令 - Fly</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="JavaScript学习笔记2">
+            <span class="h2" id="subtitle" title="Vue基本指令">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-03-27 17:56" pubdate>
-        2021年3月27日 下午
+      <time datetime="2022-01-08 09:35" pubdate>
+        2022年1月8日 上午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      326 字
+      780 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      11
        分钟
     </span>
   
@@ -224,12 +224,12 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">JavaScript学习笔记2</h1>
+            <h1 style="display: none">Vue基本指令</h1>
             
             <div class="markdown-body">
-              <h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><a id="more"></a>
+              <h1 id="Day2-基本指令"><a href="#Day2-基本指令" class="headerlink" title="Day2 基本指令"></a>Day2 基本指令</h1><a id="more"></a>
 
-<h2 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.onload = intAll;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">intAll</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> ans = prompt(<span class="hljs-string">&quot;Enter a number&quot;</span>,<span class="hljs-string">&quot;&quot;</span>);<br>    <span class="hljs-keyword">try</span>&#123;<br>        <span class="hljs-comment">/*我们要关注 3 种情况：根本没有输入；用户输入了某些内容，但不是数字；输入的是数字，但它是负数（因为负数的平方根是虚数，这超出了这个示例的范围） 。如果 !ans 是 true ，就意味着用户没有输入任何内容。内置的 isNaN() 方法检查传递给它的参数是否“不是数字（Not a Number） ” 。如果isNaN() 返回 true ，就说明输入的内容是无效的。如果 ans 小于 0，它就是负数。对于以上任何情况，都希望抛出一个错误，指出“Not a valid number（不是有效的数字） ” 。当抛出错误之后，JavaScript 跳出try 块并寻找对应的 catch 语句。因此， try 块中其余的代码都被跳过。 */</span><br>        <br>        <span class="hljs-keyword">if</span> (!ans||<span class="hljs-built_in">isNaN</span>(ans)||ans&lt;<span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;Not a number&quot;</span>);<br>        &#125;<br>        <span class="hljs-comment">//如果输入了有效的内容，就显示平方根</span><br>        alert(<span class="hljs-string">&quot;The square root of&quot;</span>+ans+<span class="hljs-string">&quot;is&quot;</span>+<span class="hljs-built_in">Math</span>.sqrt(ans));<br>    &#125;<br>    <span class="hljs-keyword">catch</span>(errMsg)&#123;<br>        alert(errMsg.message);<br>    &#125;<br>    <span class="hljs-comment">/*还有一个可选部分：最后的 &#123;&#125; 块。这个部分放在 catch 后面，无论 try 块是否抛出错误，这里</span><br><span class="hljs-comment">包含的代码都应该执行。  */</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Vue指令<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--1.内容绑定，事件绑定</span><br><span class="hljs-comment">            v-text，设置标签的内容；默认写法会替换全部内容，</span><br><span class="hljs-comment">            使用插值表达式&#123;&#123;&#125;&#125;可以替换指定内容；内部支持写表达式</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">            v-html,设置元素的innerHTML;内容中html结构会被解析为标签；</span><br><span class="hljs-comment">            v-text指令无论内容是什么，只会解析文本。</span><br><span class="hljs-comment">            v-on,为元素绑定事件；事件名不需要写on；指令可以简写为@；</span><br><span class="hljs-comment">            绑定的方法定义在methods属性中；方法内部通过this关键字可以访问定义在data中的数据。</span><br><span class="hljs-comment">        2.显示切换，事件绑定</span><br><span class="hljs-comment">            v-show，根据真假切换元素的显示状态；原理是修改元素的display，实现显示隐藏；</span><br><span class="hljs-comment">            指令后边的内容，最终都会解析为布尔值；值为true元素显示，值为false元素隐藏；</span><br><span class="hljs-comment">            数据改变后，对应的元素的显示状态会同步更新。</span><br><span class="hljs-comment">            v-if，根据真假切换元素的显示状态；本质是操纵DOM元素来切换显示状态；</span><br><span class="hljs-comment">            表达式的值为true，元素存放于dom树中，为false,从dom书中删除。</span><br><span class="hljs-comment">            频繁切换用v-show，反之用v-if，前者的切换消耗小。</span><br><span class="hljs-comment">            v-bind，为元素绑定属性；完整写法是v-bind:属性名=“”</span><br><span class="hljs-comment">            简写 :属性名=“”</span><br><span class="hljs-comment">            需要动态的增删class建议使用对象的方式。</span><br><span class="hljs-comment">        3.列表循环，表单元素绑定</span><br><span class="hljs-comment">            v-for</span><br><span class="hljs-comment">            v-on</span><br><span class="hljs-comment">            v-model</span><br><span class="hljs-comment">          --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- v-text --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">v-text</span>=<span class="hljs-string">&quot;message+&#x27;!&#x27;&quot;</span>&gt;</span>杭州<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>濮阳&#123;&#123;message +&quot;!&quot;&#125;&#125;杭州<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><span class="hljs-comment">&lt;!-- 插值表达式，优点替换部分内容（大括号内） --&gt;</span><br>        <span class="hljs-comment">&lt;!-- v-html --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-html</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- v-on --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;事件绑定&quot;</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">&quot;doIt&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;事件绑定1&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;doIt&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;双击事件&quot;</span> @<span class="hljs-attr">dblclick</span>=<span class="hljs-string">&quot;doIt&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;changecity&quot;</span>&gt;</span>&#123;&#123;city&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- v-show --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../img/1.jpg&quot;</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">&quot;isshow&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;切换显示状态 &quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;changeisshow&quot;</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- &lt;img src=&quot;../img/2.jpg&quot; v-show=&quot;age&gt;=18&quot;&gt;</span><br><span class="hljs-comment">        &lt;input type=&quot;button&quot; value=&quot;增加年龄&quot; @click=&quot;Addage&quot;&gt; --&gt;</span><br>        <br>     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">        <span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="javascript">            el:<span class="hljs-string">&quot;#app&quot;</span>,</span><br>            data:&#123;<br><span class="javascript">                message:<span class="hljs-string">&#x27;陈建岩&#x27;</span>,</span><br><span class="handlebars"><span class="xml">                content:&quot;<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&#x27;#&#x27;</span>&gt;</span>杭州<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>&quot;,</span></span><br><span class="javascript">                city:<span class="hljs-string">&quot;濮阳&quot;</span>,</span><br><span class="javascript">                isshow:<span class="hljs-literal">false</span>,</span><br>                <br><br>            &#125;,<br>            methods:&#123;<br><span class="javascript">                doIt:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">                    alert(<span class="hljs-string">&quot;做it&quot;</span>);</span><br>                &#125;,<br><span class="javascript">                changecity:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">                    <span class="hljs-built_in">this</span>.city+=<span class="hljs-string">&quot;杭州&quot;</span></span><br>                &#125;,<br><span class="javascript">                changeisshow:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">                    <span class="hljs-built_in">this</span>.isshow=!<span class="hljs-built_in">this</span>.isshow;</span><br>                &#125;<br>                <br>            &#125;,<br>        &#125;)<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -241,7 +241,7 @@
                     
                       <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/JavaScript/">JavaScript</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Vue/">Vue</a>
                     
                   </div>
                 
@@ -249,7 +249,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
                     
                   </div>
                 
@@ -262,18 +262,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/07/Vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vue学习笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/27/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
-                        <span class="hidden-mobile">JavaScript学习笔记1</span>
+                      <a href="/2022/01/07/Vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">Vue学习笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
