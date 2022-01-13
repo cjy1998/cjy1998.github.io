@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="chenjian">
+  <meta name="keywords" content="">
+  <title>Java基础之流程控制 - Fly</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":"truefooter","baidu":"a9e99669af27c2088ada70d9eeab9aaa","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>在云端易逍遥</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/img13.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Java基础之流程控制">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-13 23:54" pubdate>
+        2022年1月13日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java基础之流程控制</h1>
+            
+            <div class="markdown-body">
+              <h2 id="Java的流程控制"><a href="#Java的流程控制" class="headerlink" title="Java的流程控制"></a>Java的流程控制</h2><p><strong>顺序结构,选择结构,循环结构。</strong></p>
+<p><strong>if选择结构，switch case选择结构；while循环，do  while循环，for循环</strong></p>
+<a id="more"></a>
+
+<h4 id="1-1-顺序结构"><a href="#1-1-顺序结构" class="headerlink" title="1.1 顺序结构"></a>1.1 顺序结构</h4><p><strong>在程序运行中，最简单的便是顺序结构，程序运行都是从上到下都是一步一步执行的，这更符合顺序两个字。</strong></p>
+<h4 id="1-2-选择结构"><a href="#1-2-选择结构" class="headerlink" title="1.2 选择结构"></a>1.2 选择结构</h4><p> 根据条件选择要执行的程序块</p>
+<ul>
+<li><strong>if单选择结构：</strong>判断一件事情是否可行，再去执行</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//基本结构：</span><br><span class="hljs-comment">//    if(布尔表达式)&#123;要执行的代码&#125;</span><br><br><br>Scanner sc=<span class="hljs-keyword">new</span> Scanner(System.in);<span class="hljs-comment">//实例化一个输入</span><br>String str=sc.nextLine();<span class="hljs-comment">//从键盘接收键入的数据并赋给str</span><br><span class="hljs-keyword">if</span>(str.equals(&amp;quot;我爱java&amp;quot;))&#123;<span class="hljs-comment">//比较键入的数据是否和equals中的字符串是否相等</span><br>    System.out.println(&amp;quot;比较成功，您输入的是:&amp;quot;+str);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>if双选择结构：</strong>判断事情正确执行某段代码，不正确则执行另外一段代码</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java">Scanner sc=<span class="hljs-keyword">new</span> Scanner(System.in);<span class="hljs-comment">//实例化一个输入</span><br>String str=sc.nextLine();<span class="hljs-comment">//从键盘接收键入的数据并赋给str</span><br><span class="hljs-keyword">if</span>(str.equals(&amp;quot;我爱java&amp;quot;))&#123;<span class="hljs-comment">//比较键入的数据是否和equals中的字符串是否相等</span><br>    System.out.println(&amp;quot;比较成功，您输入的是:&amp;quot;+str);<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    System.out.println(&amp;quot;输入的数据不正确&amp;quot;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>if多选择结构：</strong>多个条件，分别判断</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">Scanner sc=<span class="hljs-keyword">new</span> Scanner(System.in);<span class="hljs-comment">//实例化一个输入</span><br><span class="hljs-keyword">int</span> grade=sc.nextInt();<span class="hljs-comment">//从键盘接收键入的数据并赋给grade</span><br><span class="hljs-keyword">if</span>(grade&amp;gt;<span class="hljs-number">80</span>)&#123;<br>    System.out.println(&amp;quot;成绩优秀&amp;quot;);<br>&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(grade&amp;gt;<span class="hljs-number">70</span>&amp;amp;&amp;amp;grade&amp;lt;<span class="hljs-number">80</span>)&#123;<br>    System.out.println(&amp;quot;成绩良好&amp;quot;);<br>&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(grade&amp;gt;<span class="hljs-number">60</span>&amp;amp;&amp;amp;grade&amp;lt;<span class="hljs-number">70</span>)&#123;<br>    System.out.println(&amp;quot;成绩一般&amp;quot;);<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    System.out.println(&amp;quot;成绩不及格&amp;quot;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>if嵌套：</strong>可以实现多个条件都成立时才执行语句</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">Scanner sc=<span class="hljs-keyword">new</span> Scanner(System.in);<span class="hljs-comment">//实例化一个输入</span><br>System.out.println(&amp;quot;输入名字：&amp;quot;);<br>String name=sc.nextLine();<br>System.out.println(&amp;quot;输入成绩：&amp;quot;);<br><span class="hljs-keyword">int</span> grade=sc.nextInt();<span class="hljs-comment">//从键盘接收键入的数据并赋给grade</span><br><span class="hljs-keyword">if</span>(name.euqals(&amp;quot;小明&amp;quot;))&#123;<br>    <span class="hljs-keyword">if</span>(grade&amp;gt;<span class="hljs-number">60</span>)&#123;<br>	    System.out.println(name+&amp;quot;的成绩是：&amp;quot;+grade);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>**上面的if嵌套意思是输入的名字是小明，才会执行第二个if，如果成绩大于60，会输出 小明的成绩 **</p>
+<ul>
+<li>**switch case选择结构:**也是多选择结构的另外一种实现方式，判断一个变量与某一值是否相等，每个值称为一个分支。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java">Scanner sc=<span class="hljs-keyword">new</span> Scanner(System.in);<span class="hljs-comment">//实例化一个输入</span><br>System.out.println(&amp;quot;输入成绩等级：&amp;quot;);<br>String grade=sc.nextLine();<br><span class="hljs-keyword">switch</span>(grade)&#123;<br>    case &amp;#39;A&amp;#39;:<br>        System.out.println(&amp;quot;优秀&amp;quot;);<br>        <span class="hljs-keyword">break</span>;<span class="hljs-comment">//注意每条case分支都要加break，否则会出现case穿透，会从开始一直执行到下一个break出现或者执行到default</span><br>    case &amp;#39;B&amp;#39;:<br>        System.out.println(&amp;quot;良好&amp;quot;);<br>        <span class="hljs-keyword">break</span>;<br>    case &amp;#39;C&amp;#39;:<br>        System.out.println(&amp;quot;一般&amp;quot;);<br>        <span class="hljs-keyword">break</span>;<br>    case &amp;#39;D&amp;#39;:<br>        System.out.println(&amp;quot;凑合&amp;quot;);<br>        <span class="hljs-keyword">break</span>;<br>    case &amp;#39;E&amp;#39;:<br>        System.out.println(&amp;quot;不太行&amp;quot;);<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">default</span>:<br>        System.out.println(&amp;quot;你输入的东西是啥？？？&amp;quot;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>在switch语句中最值得注意的地方：case穿透问题，即每个分支最后都要有break语句，有时也可根据需求，不加break，让穿透执行下去</strong></p>
+<h4 id="1-3-循环结构"><a href="#1-3-循环结构" class="headerlink" title="1.3 循环结构"></a>1.3 循环结构</h4><ul>
+<li><strong>while循环：</strong>是最基本的循环语句，先判断再执行</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//基本结构为</span><br><span class="hljs-comment">//while(布尔表达式)&#123;要循环的语句&#125;</span><br><span class="hljs-comment">//下面程序是输出0-100</span><br><span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(i&amp;lt;=<span class="hljs-number">100</span>)&#123;<span class="hljs-comment">//只要布尔表达式为True，程序便会一直执行下去</span><br>    System.out.println(i);<br>    i++<span class="hljs-comment">//执行完这句之后，继续回到布尔表达式处判断，判断成功循环继续，判断失败循环结束</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>do  while循环：</strong>与while循环最大的区别就是程序会至少执行一次，先执行再判断</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*基本结构</span><br><span class="hljs-comment">	do&#123;</span><br><span class="hljs-comment">		代码语句块</span><br><span class="hljs-comment">	  &#125;while(布尔表达式);</span><br><span class="hljs-comment">*/</span><br><span class="hljs-comment">//下面程序是计算1-100的总和</span><br><span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">do</span>&#123;<br>    sum=sum+i;<br>    System.out.println(&amp;quot;sum:&amp;quot;+sum);<br>    i++;<br>&#125;<span class="hljs-keyword">while</span>(i&amp;lt;=<span class="hljs-number">100</span>);<br></code></pre></td></tr></table></figure>
+<ul>
+<li>**for循环:**结构  for(初始化;布尔表达式;更新){循环体}</li>
+</ul>
+<p>&gt; 执行流程：1. 第一次进入for循环，判断布尔表达式是否成立，若成立则执行循环<br>&gt;<br>&gt;                    2.执行一次循环体之后，更新命令执行<strong>主要是对初始化值的变更</strong><br>&gt;<br>&gt;                    3.再判断表达式是否成立</p>
+<p>下面举几个关于for循环的简单的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//1.请输出1-100,并且每行输出三个</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&amp;lt;=<span class="hljs-number">100</span>;i++)&#123;<span class="hljs-comment">//每次判断成功执行循环体后，会执行i++，然后再执行判断</span><br>    <span class="hljs-keyword">if</span>(i%<span class="hljs-number">3</span>==<span class="hljs-number">0</span>)&#123;<br>        System.out.print(i+&amp;quot;\n&amp;quot;);<br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>        System.out.print(i+&amp;quot;\t&amp;quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//2.打印0-100以内奇数、偶数的和</span><br><span class="hljs-keyword">int</span> oddSum=<span class="hljs-number">0</span>;<span class="hljs-comment">//奇数和初始化</span><br><span class="hljs-keyword">int</span> evenSum=<span class="hljs-number">0</span>;<span class="hljs-comment">//偶数和初始化</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &amp;lt;=<span class="hljs-number">100</span>; i++) &#123;<span class="hljs-comment">//每次判断成功执行循环体后，会执行i++，然后再执行判断</span><br>    <span class="hljs-keyword">if</span>(i%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;<br>        evenSum+=i;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        oddSum+=i;<br>    &#125;<br>&#125;<br>System.out.println(&amp;quot;奇数的和为:&amp;quot;+oddSum+&amp;quot;\n偶数的和为:&amp;quot;+evenSum);<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//3.打印1-1000能被5整除的数，并且每行输出三个</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &amp;lt;= <span class="hljs-number">1000</span>; i++) &#123;<span class="hljs-comment">//每次判断成功执行循环体后，会执行i++，然后再执行判断</span><br>    <span class="hljs-keyword">if</span> (i%<span class="hljs-number">5</span>==<span class="hljs-number">0</span>)&#123;<br>        System.out.print(i+&amp;quot;\t&amp;quot;);<br>        <span class="hljs-keyword">if</span> (i%(<span class="hljs-number">3</span>*<span class="hljs-number">5</span>)==<span class="hljs-number">0</span>)&#123;<br>            System.out.println();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//4.打印99乘法表</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &amp;lt;= <span class="hljs-number">9</span>; i++) &#123;<span class="hljs-comment">//每次判断成功执行循环体后，会执行i++，然后再执行判断</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &amp;lt;= i; j++) &#123; <span class="hljs-comment">//j和i比较，来控制每行输出个数不超过i个，可以得出乘法表的格式</span><br>        System.out.print(j+&amp;quot;*&amp;quot;+i+&amp;quot;=&amp;quot;+i*j+&amp;quot;\t&amp;quot;);<br>    &#125;<br>    System.out.println();<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//5.打印一个三角形</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&amp;lt;=<span class="hljs-number">7</span>; i++) &#123;<span class="hljs-comment">//控制三角形的大小</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">7</span>; j&amp;gt;=i; j--) &#123;<span class="hljs-comment">//控制每行应该输出的空格数</span><br>        System.out.print(&amp;quot; &amp;quot;);<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> z = <span class="hljs-number">1</span>; z &amp;lt;=i ; z++) &#123;<span class="hljs-comment">//控制三角形的每行左半生成</span><br>        System.out.print(&amp;quot;*&amp;quot;);<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> f =<span class="hljs-number">1</span>; f &amp;lt; i; f++) &#123;<span class="hljs-comment">//控制三角形每行的右半生成</span><br>        System.out.print(&amp;quot;*&amp;quot;);<br>    &#125;<br>    System.out.println();<span class="hljs-comment">//换行</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>增强的for循环，常用在遍历集合或者数组，可以直接定义一个类型的变量，用来遍历</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//6.增强for循环</span><br><span class="hljs-keyword">int</span>[] num=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>&#125;;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : num) &#123;<br>    System.out.println(i);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>break</strong>   在任何循环语句的主体部分，都可以用break语句，用于强行结束循环，不再执行下面的语句！</p>
+</li>
+<li><p><strong>continue</strong>  用在任何循环语句的主体部分，一般用于结束本次循环，跳过下面的语句，开启下一次的循环。</p>
+</li>
+<li><p><strong>goto关键字</strong>   在java中是没有这个关键字的，但是有类似用法，就是带标签的continue和break</p>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Java/">Java</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/13/v-bind%E5%92%8C%E5%B0%8F%E7%BB%83%E4%B9%A0/">
+                        <span class="hidden-mobile">v-bind和小练习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "icBvU7spvG0iawymtNOxesQq-gzGzoHsz",
+          app_key: "Hc7KXd3ix4QaO9Pa5aPeKpAv",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a9e99669af27c2088ada70d9eeab9aaa";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
