@@ -1,0 +1,584 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="chenjian">
+  <meta name="keywords" content="">
+  <title>面向对象（中） - Fly</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":"truefooter","baidu":"a9e99669af27c2088ada70d9eeab9aaa","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>在云端易逍遥</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/img13.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="面向对象（中）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-29 21:50" pubdate>
+        2022年1月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">面向对象（中）</h1>
+            
+            <div class="markdown-body">
+              <h3 id="y继承性"><a href="#y继承性" class="headerlink" title="y继承性"></a>y继承性</h3><h4 id="1-继承性的好处"><a href="#1-继承性的好处" class="headerlink" title="1.继承性的好处"></a>1.继承性的好处</h4><ol>
+<li>减少了代码的冗余，提高了代码的复用性。</li>
+<li>便于功能的扩展。</li>
+<li>为之后多态性的使用，提供了前提。</li>
+</ol>
+<h4 id="2-继承性的格式"><a href="#2-继承性的格式" class="headerlink" title="2.继承性的格式"></a>2.继承性的格式</h4><p>  <strong>class A extends B{}</strong></p>
+<p>  A:子类、派生类</p>
+<p>  B：父类，基类</p>
+<h4 id="3-子类继承父类以后有哪些不同？"><a href="#3-子类继承父类以后有哪些不同？" class="headerlink" title="3.子类继承父类以后有哪些不同？"></a>3.子类继承父类以后有哪些不同？</h4><p> <strong>体现：一旦子类A继承父类B以后，子类A中就获取了父类B中声明的所有的属性和方法。</strong></p>
+<ul>
+<li><p>特别的，父类中声明为private的属性或方法，子类继承父类以后，仍然认为获取了父类中私有的结构。只有因为封装性的影响，使得子类不能直接调用父类的结构而已。</p>
+<p><strong>子类继承父类以后，还可以声明自己特有的属性或方法：实现功能的拓展。</strong></p>
+</li>
+</ul>
+<ul>
+<li><pre><code>   子类和父类的关系，不同于子集和集合的关系。</code></pre>
+</li>
+<li><pre><code>   extends：延展、扩展</code></pre>
+</li>
+</ul>
+<h4 id="4-Java中继承性的说明"><a href="#4-Java中继承性的说明" class="headerlink" title="4.Java中继承性的说明"></a>4.Java中继承性的说明</h4><ul>
+<li>一个类可以被多个子类继承。</li>
+<li> Java中类的单继承性：一个类只能有一个父类</li>
+<li>子父类是相对的概念。</li>
+<li>子类直接继承的父类，称为：直接父类。间接继承的父类称为：间接父类</li>
+<li>子类继承父类以后，就获取了直接父类以及所有间接父类中声明的属性和方法</li>
+</ul>
+<h4 id="5-java-lang-Object类的理解"><a href="#5-java-lang-Object类的理解" class="headerlink" title="5.java.lang.Object类的理解"></a>5.java.lang.Object类的理解</h4><ul>
+<li>如果我们没有显式的声明一个类的父类的话，则此类继承于java.lang.Object类</li>
+</ul>
+<ul>
+<li>   所有的java类（除java.lang.Object类之外）都直接或间接的继承于java.lang.Object类</li>
+<li>   意味着，所有的java类具有java.lang.Object类声明的功能。</li>
+</ul>
+<h3 id="方法的重写-override-overwrite"><a href="#方法的重写-override-overwrite" class="headerlink" title="方法的重写(override / overwrite)"></a>方法的重写(override / overwrite)</h3><p>1.重写：子类继承父类以后，可以对父类中<strong>同名同参数的方法</strong>，进行覆盖操作</p>
+<p>2.应用：重写以后，当创建子类对象以后，通过子类对象调用子父类中的同名同参数的方法时，<strong>实际执行的是子类重写父类的方法</strong>。</p>
+<p>3.重写的规定：</p>
+<p>方法的声明： 权限修饰符  返回值类型  方法名(形参列表) throws 异常的类型{</p>
+<p>//方法体   }</p>
+<p><strong>约定俗称</strong>：<strong>子类中的叫重写的方法，父类中的叫被重写的方法</strong></p>
+<p>① 子类重写的方法的方法名和形参列表与父类被重写的方法的方法名和形参列表相同</p>
+<p>② 子类重写的方法的权限修饰符不小于父类被重写的方法的权限修饰符</p>
+<p><strong>特殊情况</strong>：<strong>子类不能重写父类中声明为private权限的方法</strong></p>
+<p>③ 返回值类型：</p>
+<p>父类被重写的方法的返回值类型是void，则子类重写的方法的返回值类型只能是void</p>
+<p>父类被重写的方法的返回值类型是A类型，则子类重写的方法的返回值类型可以是A类或A类的子类</p>
+<p>父类被重写的方法的返回值类型是基本数据类型(比如：double)，则子类重写的方法的返回值类型必须是相同的基本数据类型(必须也是double)</p>
+<p>④ 子类重写的方法抛出的异常类型不大于父类被重写的方法抛出的异常类型</p>
+<p><strong>子类和父类中的同名同参数的方法要么都声明为非static的（考虑重写），要么都声明为static的（不是重写）</strong></p>
+<h3 id="super关键字的使用"><a href="#super关键字的使用" class="headerlink" title="super关键字的使用"></a>super关键字的使用</h3><h4 id="1-super理解为：父类的"><a href="#1-super理解为：父类的" class="headerlink" title="1.super理解为：父类的"></a>1.super理解为：父类的</h4><h4 id="2-super可以用来调用：属性、方法、构造器"><a href="#2-super可以用来调用：属性、方法、构造器" class="headerlink" title="2.super可以用来调用：属性、方法、构造器"></a>2.super可以用来调用：属性、方法、构造器</h4><h4 id="3-super的使用：调用属性和方法"><a href="#3-super的使用：调用属性和方法" class="headerlink" title="3.super的使用：调用属性和方法"></a>3.super的使用：调用属性和方法</h4><ul>
+<li>我们可以在子类的方法或构造器中。通过使用”super.属性”或”super.方法”的方式，显式的调用父类中声明的属性或方法。但是，通常情况下，我们习惯省略”super.”</li>
+<li> <strong>特殊情况：当子类和父类中定义了同名的属性时，我们要想在子类中调用父类中声明的属性，则必须显式的使用”super.属性”的方式，表明调用的是父类中声明的属性。</strong></li>
+<li><strong>特殊情况：当子类重写了父类中的方法以后，我们想在子类的方法中调用父类中被重写的方法时，则必须显式的使用”super.方法”的方式，表明调用的是父类中被重写的方法。</strong></li>
+</ul>
+<h4 id="4-super调用构造器"><a href="#4-super调用构造器" class="headerlink" title="4.super调用构造器"></a>4.super调用构造器</h4><ul>
+<li>  我们可以在子类的构造器中显式的使用”super(形参列表)”的方式，调用父类中声明的指定的构造器</li>
+<li><strong>“super(形参列表)”的使用，必须声明在子类构造器的首行！</strong></li>
+<li><strong>我们在类的构造器中，针对于”this(形参列表)”或”super(形参列表)”只能二选一，不能同时出现</strong></li>
+<li>在构造器的首行，没有显式的声明”this(形参列表)”或”super(形参列表)”，<strong>则默认调用的是父类中空参的构造器：super()</strong></li>
+<li>在类的多个构造器中，**至少有一个类的构造器中使用了”super(形参列表)”**，调用父类中的构造</li>
+</ul>
+<h3 id="子类对象实例化的全过程"><a href="#子类对象实例化的全过程" class="headerlink" title="子类对象实例化的全过程"></a>子类对象实例化的全过程</h3><h4 id="1-从结果上来看：（继承性）"><a href="#1-从结果上来看：（继承性）" class="headerlink" title="1.从结果上来看：（继承性）"></a>1.从结果上来看：（继承性）</h4><ul>
+<li>子类继承父类以后，就获取了父类中声明的属性或方法。</li>
+<li>创建子类的对象，在堆空间中，就会加载所有父类中声明的属性。</li>
+</ul>
+<h4 id="2-从过程上来看："><a href="#2-从过程上来看：" class="headerlink" title="2.从过程上来看："></a>2.从过程上来看：</h4><ul>
+<li><pre><code>    当我们通过子类的构造器创建子类对象时，我们一定会直接或间接的调用其父类的构造器，进而调用父类的父类的构造器，...</code></pre>
+</li>
+<li>   直到调用了java.lang.Object类中空参的构造器为止。正因为加载过所有的父类的结构，所以才可以看到内存中有</li>
+<li>   父类中的结构，子类对象才可以考虑进行调用。</li>
+<li><strong>明确：虽然创建子类对象时，调用了父类的构造器，但是自始至终就创建过一个对象，即为new的子类对象。</strong></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/31/v-for%E8%A1%A5%E5%85%85/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">v-for补充</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/27/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                        <span class="hidden-mobile">面向对象</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "icBvU7spvG0iawymtNOxesQq-gzGzoHsz",
+          app_key: "Hc7KXd3ix4QaO9Pa5aPeKpAv",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a9e99669af27c2088ada70d9eeab9aaa";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
