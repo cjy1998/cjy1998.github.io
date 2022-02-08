@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      2k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      24
        分钟
     </span>
   
@@ -307,6 +307,55 @@
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">npm <span class="hljs-keyword">install </span>--save-dev <span class="hljs-keyword">babel-loader@7 </span><span class="hljs-keyword">babel-core </span><span class="hljs-keyword">babel-preset-es2015</span><br></code></pre></td></tr></table></figure>
 <p>配置webpack.config.js文件</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript">rules: [<br>   &#123;<br>     test: <span class="hljs-regexp">/\.m?js$/</span>,<br>     exclude: <span class="hljs-regexp">/(node_modules|bower_components)/</span>,<br>     use: &#123;<br>       loader: <span class="hljs-string">&#x27;babel-loader&#x27;</span>,<br>       options: &#123;<br>         presets: [<span class="hljs-string">&#x27;es2015&#x27;</span>]<br>       &#125;<br>     &#125;<br>   &#125;<br> ]<br></code></pre></td></tr></table></figure>
+<h3 id="webpack配置Vue"><a href="#webpack配置Vue" class="headerlink" title="webpack配置Vue"></a>webpack配置Vue</h3><h4 id="一、引入Vuejs"><a href="#一、引入Vuejs" class="headerlink" title="一、引入Vuejs"></a>一、引入Vuejs</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install vue <span class="hljs-comment">--save</span><br></code></pre></td></tr></table></figure>
+<p>修改webpack的配置</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-attribute">resolve</span>: &#123;<br>    <span class="hljs-comment">//alias:别名</span><br>    <span class="hljs-attribute">alias</span>: &#123;<br>        <span class="hljs-string">&#x27;vue$&#x27;</span>: <span class="hljs-string">&#x27;vue/dist/vue.esm.js&#x27;</span><br>    &#125;<br>&#125;,<br></code></pre></td></tr></table></figure>
+<h4 id="二、安装vue-loader和vue-template-compiler"><a href="#二、安装vue-loader和vue-template-compiler" class="headerlink" title="二、安装vue-loader和vue-template-compiler"></a>二、安装vue-loader和vue-template-compiler</h4><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">npm install vue-loader  vue-<span class="hljs-keyword">template</span>-compiler <span class="hljs-comment">--save-dev</span><br></code></pre></td></tr></table></figure>
+<p>修改webpack.config.js的配置文件</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">&#123;<br>          <span class="hljs-attribute">test</span>: /\.vue$/,<br>          use: [<span class="hljs-string">&#x27;vue-loader&#x27;</span>]<br>      &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="plugin的使用"><a href="#plugin的使用" class="headerlink" title="plugin的使用"></a>plugin的使用</h3><h4 id="loader和plugin区别"><a href="#loader和plugin区别" class="headerlink" title="loader和plugin区别"></a>loader和plugin区别</h4><ul>
+<li>loader主要用于转换某些类型的模块，它是一个转换器。</li>
+<li>plugin是插件，它是对webpack本身的扩展，是一个扩展器。</li>
+</ul>
+<h4 id="plugin的使用过程："><a href="#plugin的使用过程：" class="headerlink" title="plugin的使用过程："></a>plugin的使用过程：</h4><ul>
+<li>步骤一：通过npm安装需要使用的plugins(某些webpack已经内置的插件不需要安装)</li>
+<li>步骤二：在webpack.config.js中的plugins中配置插件。</li>
+</ul>
+<h4 id="添加版权的Plugin（BannerPlugin）"><a href="#添加版权的Plugin（BannerPlugin）" class="headerlink" title="添加版权的Plugin（BannerPlugin）"></a>添加版权的Plugin（BannerPlugin）</h4><p>   修改webpack.config.js的文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;webpack&#x27;</span>)<br>plugins: [<br>  <span class="hljs-keyword">new</span> webpack.BannerPlugin(<span class="hljs-string">&#x27;最终版权归cjy所有&#x27;</span>),<br>]<br></code></pre></td></tr></table></figure>
+<p>  重新打包程序后可以查看bundle.js文件的头部，看到版权信息。</p>
+<h4 id="打包html的plugin（HtmlWebpackPlugin）"><a href="#打包html的plugin（HtmlWebpackPlugin）" class="headerlink" title="打包html的plugin（HtmlWebpackPlugin）"></a>打包html的plugin（HtmlWebpackPlugin）</h4><p>HtmlWebpackPlugin插件可以为我们做这些事情：</p>
+<ol>
+<li>自动生成一个index.html文件(可以指定模板来生成)</li>
+<li>将打包的js文件，自动通过script标签插入到body中</li>
+</ol>
+<p>安装HtmlWebpackPlugin插件</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs q">npm install html-Webpack-Plugin --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span><br></code></pre></td></tr></table></figure>
+<p>修改webpack.config.js文件中plugins部分的内容如下：</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-variable">const</span> <span class="hljs-variable">HtmlWebpackPlugin</span> = <span class="hljs-function"><span class="hljs-title">require</span>(<span class="hljs-string">&#x27;html-webpack-plugin&#x27;</span>)</span><br><span class="hljs-variable">plugins</span>: [<br>  <span class="hljs-variable">new</span> <span class="hljs-function"><span class="hljs-title">HtmlWebpackPlugin</span>(&#123;</span><br><span class="hljs-function">    <span class="hljs-variable">template</span>: <span class="hljs-string">&#x27;index.html&#x27;</span></span><br><span class="hljs-function">  &#125;)</span><br>]<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>这里的template表示根据什么模板来生成index.html</strong></li>
+<li><strong>另外，我们需要删除之前在output中添加的publicPath属性,否则插入的script标签中的src可能会有问题</strong></li>
+</ul>
+<h4 id="js压缩的Plugin"><a href="#js压缩的Plugin" class="headerlink" title="js压缩的Plugin"></a>js压缩的Plugin</h4><p>在项目发布之前，我们必然需要对js等文件进行压缩处理</p>
+<p>使用一个第三方的插件uglifyjs-webpack-plugin，并且版本号指定1.1.1，和CLI2保持一致</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">npm</span> install uglifyjs-webpack-plugin@<span class="hljs-number">1</span>.<span class="hljs-number">1</span>.<span class="hljs-number">1</span> --save-dev<br></code></pre></td></tr></table></figure>
+<p>修改webpack.config.js文件</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-variable">const</span> <span class="hljs-variable">Uglifyjs</span> = <span class="hljs-function"><span class="hljs-title">require</span>(<span class="hljs-string">&#x27;uglifyjs-webpack-plugin&#x27;</span>)</span><br><span class="hljs-variable">plugins</span>: [<br>  <span class="hljs-variable">new</span> <span class="hljs-function"><span class="hljs-title">Uglifyjs</span>()</span><br>]<br></code></pre></td></tr></table></figure>
+<h3 id="搭建本地服务器"><a href="#搭建本地服务器" class="headerlink" title="搭建本地服务器"></a>搭建本地服务器</h3><p>​    webpack提供了一个可选的本地开发服务器，这个本地服务器基于node.js搭建，内部使用express框架，可以实现我们想要的让浏览器自动刷新显示我们修改后的结果。</p>
+<p>安装webpack-dev-server</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">npm</span> install --save-dev webpack-dev-server@<span class="hljs-number">2</span>.<span class="hljs-number">9</span>.<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<p><strong>devserver也是作为webpack中的一个选项，选项本身可以设置如下属性：</strong></p>
+<ul>
+<li>contentBase：为哪一个文件夹提供本地服务，默认是根文件夹，我们这里要填写./dist</li>
+<li>port：端口号</li>
+<li>inline：页面实时刷新</li>
+<li>historyApiFallback：在SPA页面中，依赖HTML5的history模式</li>
+</ul>
+<p>webpack.config.js文件配置修改如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">devServer</span>: &#123;<br>  <span class="hljs-attribute">contentBase</span>: <span class="hljs-string">&#x27;./dist&#x27;</span>,<br>  inline: true<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在package.json配置另外一个scripts：–open参数表示直接打开浏览器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-string">&quot;dev&quot;</span>: <span class="hljs-string">&quot;webpack-dev-server --open --config ./build/dev.config.js&quot;</span><br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -338,6 +387,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/02/08/Git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Git基础知识</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
