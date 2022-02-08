@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Vuecli基础</title>
+    <link href="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/"/>
+    <url>/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/</url>
+    
+    <content type="html"><![CDATA[<p>​    CLI是Command-Line Interface, 翻译为命令行界面, 但是俗称脚手架。Vue CLI是一个官方发布 vue.js 项目脚手架使用 vue-cli 可以快速搭建Vue开发环境以及对应的webpack配置。</p><a id="more"></a><h2 id="Vue-CLI使用前提-–Node"><a href="#Vue-CLI使用前提-–Node" class="headerlink" title="Vue CLI使用前提 –Node"></a>Vue CLI使用前提 –Node</h2><h3 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h3><p>可以直接在官方网站中下载安装.</p><p>网址: <a href="http://nodejs.cn/download/">http://nodejs.cn/download/</a></p><h3 id="检测安装的版本"><a href="#检测安装的版本" class="headerlink" title="检测安装的版本"></a>检测安装的版本</h3><p>默认情况下自动安装Node和NPM</p><p>Node环境要求8.9以上或者更高版本</p><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/node-v.png"></p><h3 id="什么是NPM呢"><a href="#什么是NPM呢" class="headerlink" title="什么是NPM呢?"></a>什么是NPM呢?</h3><ul><li>NPM的全称是Node Package Manager</li><li>是一个NodeJS包管理和分发工具，已经成为了非官方的发布Node模块（包）的标准。</li><li>我们会经常使用NPM来安装一些开发过程中依赖包.</li></ul><h3 id="cnpm的安装"><a href="#cnpm的安装" class="headerlink" title="cnpm的安装"></a>cnpm的安装</h3><p>由于国内直接使用 npm 的官方镜像是非常慢的，推荐使用淘宝 NPM 镜像。可以使用淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">npm install -g cnpm --registry=https:<span class="hljs-regexp">//</span>registry.npm.taobao.org<br></code></pre></td></tr></table></figure><p>这样就可以使用 cnpm 命令来安装模块了：</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cnpm</span> install<span class="hljs-meta"> [name]</span><br></code></pre></td></tr></table></figure><h3 id="Vue-CLI使用前提-Webpack"><a href="#Vue-CLI使用前提-Webpack" class="headerlink" title="Vue CLI使用前提 - -Webpack"></a>Vue CLI使用前提 - -Webpack</h3><ul><li>Vue.js官方脚手架工具就使用了webpack模板</li><li>对所有的资源会压缩等优化操作</li><li>它在开发过程中提供了一套完整的功能，能够使得我们开发过程中变得高效。</li></ul><p><strong>Webpack的全局安装</strong></p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> webpack -g<br></code></pre></td></tr></table></figure><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/webpack.png"></p><h3 id="VueCLI的使用"><a href="#VueCLI的使用" class="headerlink" title="VueCLI的使用"></a>VueCLI的使用</h3><h4 id="安装Vue脚手架"><a href="#安装Vue脚手架" class="headerlink" title="安装Vue脚手架"></a>安装Vue脚手架</h4><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> install -g @vue/cli<br></code></pre></td></tr></table></figure><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/vuecli.png"></p><h4 id="Vue-CLI2初始化项目"><a href="#Vue-CLI2初始化项目" class="headerlink" title="Vue CLI2初始化项目"></a>Vue CLI2初始化项目</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs csharp">vue<br><span class="hljs-keyword">init</span> webpack projectname<br></code></pre></td></tr></table></figure><h4 id="Vue-CLI3初始化项目"><a href="#Vue-CLI3初始化项目" class="headerlink" title="Vue CLI3初始化项目"></a>Vue CLI3初始化项目</h4><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">vue create projectname</span><br></code></pre></td></tr></table></figure><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/vue-create.png"></p><h4 id="目录结构详解"><a href="#目录结构详解" class="headerlink" title="目录结构详解"></a>目录结构详解</h4><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3.png"></p><h4 id="Runtime-Compiler和Runtime-only的区别"><a href="#Runtime-Compiler和Runtime-only的区别" class="headerlink" title="Runtime-Compiler和Runtime-only的区别"></a>Runtime-Compiler和Runtime-only的区别</h4><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/1.png"></p><ul><li>如果在之后的开发中，你依然使用template，就需要选择Runtime-Compiler</li><li>如果你之后的开发中，使用的是.vue文件开发，那么可以选择Runtime-only</li></ul><h3 id="render和template"><a href="#render和template" class="headerlink" title="render和template"></a>render和template</h3><p>Runtime-Compiler 版本的main.js界面</p><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/runtime-compiler.png"></p><p>Runtime-only版本的main.js界面</p><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/Runtime-only.png"></p><h4 id="vue程序的运行过程"><a href="#vue程序的运行过程" class="headerlink" title="vue程序的运行过程"></a>vue程序的运行过程</h4><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/vue%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png"></p><h4 id="render函数的使用"><a href="#render函数的使用" class="headerlink" title="render函数的使用"></a>render函数的使用</h4><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/render1.png"></p><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/render2.png"></p><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/render3.png"></p><h3 id="npm-run-build的运行过程"><a href="#npm-run-build的运行过程" class="headerlink" title="npm run build的运行过程"></a>npm run build的运行过程</h3><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/npm-run-build.png"></p><blockquote><p>转载于codewhy课件</p></blockquote><h3 id="npm-run-dev的运行过程"><a href="#npm-run-dev的运行过程" class="headerlink" title="npm run dev的运行过程"></a>npm run dev的运行过程</h3><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/npm-run-dev.png"></p><blockquote><p>转载于codewhy课件</p></blockquote><h3 id="修改配置：webpack-base-conf-js起别名"><a href="#修改配置：webpack-base-conf-js起别名" class="headerlink" title="修改配置：webpack.base.conf.js起别名"></a>修改配置：webpack.base.conf.js起别名</h3><p><img src="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/3.png"></p><h3 id="Vue-CLI3"><a href="#Vue-CLI3" class="headerlink" title="Vue CLI3"></a>Vue CLI3</h3><ul><li>vue-cli 3 是基于 webpack 4 打造，vue-cli 2 还是 webapck 3</li><li>vue-cli 3 的设计原则是“0配置”，移除的配置文件根目录下的，build和config等目录</li><li>vue-cli 3 提供了 vue ui 命令，提供了可视化配置，更加人性化</li><li>移除了static文件夹，新增了public文件夹，并且index.html移动到public中</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>Vue</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Vue</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Git基础知识</title>
     <link href="/2022/02/08/Git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     <url>/2022/02/08/Git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
