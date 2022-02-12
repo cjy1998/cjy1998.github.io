@@ -1,0 +1,933 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="chenjian">
+  <meta name="keywords" content="">
+  <title>JavaScript学习笔记3 - Fly</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":"truefooter","baidu":"a9e99669af27c2088ada70d9eeab9aaa","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>在云端易逍遥</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/img13.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript学习笔记3">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-29 17:56" pubdate>
+        2021年3月29日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      47
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript学习笔记3</h1>
+            
+            <div class="markdown-body">
+              <h3 id="1-输入输出语句"><a href="#1-输入输出语句" class="headerlink" title="1.输入输出语句"></a>1.输入输出语句</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+<th>归属</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>alert（msg）</td>
+<td>浏览器弹出警示框</td>
+<td>浏览器</td>
+</tr>
+<tr>
+<td>console.log(msg)</td>
+<td>浏览器控制台打印输出信息</td>
+<td>浏览器</td>
+</tr>
+<tr>
+<td>prompt(info)</td>
+<td>浏览器弹出输入框，用户可以进行输入</td>
+<td>浏览器</td>
+</tr>
+</tbody></table>
+<h3 id="2-声明变量的特殊情况"><a href="#2-声明变量的特殊情况" class="headerlink" title="2.声明变量的特殊情况"></a>2.声明变量的特殊情况</h3><table>
+<thead>
+<tr>
+<th>情况</th>
+<th>说明</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>var age; console.log(age);</td>
+<td>只声明，不赋值</td>
+<td>undefined</td>
+</tr>
+<tr>
+<td>console.log(age)</td>
+<td>不声明，不赋值，直接使用</td>
+<td>报错</td>
+</tr>
+<tr>
+<td>age = 10;console.log(age);</td>
+<td>不声明，只赋值</td>
+<td>10</td>
+</tr>
+</tbody></table>
+<h3 id="3-数据类型"><a href="#3-数据类型" class="headerlink" title="3.数据类型"></a>3.数据类型</h3><ul>
+<li>js的变量数据类型是程序运行过程中，根据等号右边的值来确定的。</li>
+<li>js是动态语言，变量的数据类型是可以变化的。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> age = <span class="hljs-number">10</span>;<br>age = <span class="hljs-string">&#x27;十&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>简单数据类型（Number,String,Boolean,Undefined,Null）</p>
+<p>1.Js中八进制前面加0，十六进制前面加0x。</p>
+<p>2.<strong>isNaN()，</strong>用来判断变量是否为非数字类型，如果是数字返回false，如果不是数字返回的是true。</p>
+<p><strong>3.字符串转义符</strong></p>
+<table>
+<thead>
+<tr>
+<th>转义符</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>斜杠\</td>
+</tr>
+<tr>
+<td>\‘</td>
+<td>’单引号</td>
+</tr>
+<tr>
+<td>\\“</td>
+<td>“双引号</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>tab缩进</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>空格</td>
+</tr>
+</tbody></table>
+<p>4.检测获取字符串的长度，str.length</p>
+<p>5.字符串的拼接</p>
+<p>​    <strong>字符串+任何类型=拼接之后的新字符串</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">12</span>+<span class="hljs-number">12</span>);<span class="hljs-comment">//14</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;12&#x27;</span>+<span class="hljs-number">12</span>);<span class="hljs-comment">//1212</span><br></code></pre></td></tr></table></figure>
+<p>6.布尔型和数字型相加的时候，true的值为1，false的值为0。</p>
+<p>7.一个声明后没有被赋值的变量会有一个默认值undefind</p>
+<p>​    一个声明后被赋值为null的变量,里边的存值为空</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">undefined</span> + <span class="hljs-string">&#x27;pink&#x27;</span>);//undefinedpink<br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">undefined</span> + <span class="hljs-number">1</span>);//<span class="hljs-literal">NaN</span> <span class="hljs-literal">undefined</span>和数字相加，最后结果是<span class="hljs-literal">NaN</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> + <span class="hljs-string">&#x27;pink&#x27;</span>);//nullpink<br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> + <span class="hljs-number">1</span>);//<span class="hljs-number">1</span> <span class="hljs-literal">null</span>和数字相加，最后结果是数字<br></code></pre></td></tr></table></figure>
+<p>8.<strong>prompt</strong>取过来的值是<strong>字符型</strong>的，可以使用<strong>typeof检测变量数据类型</strong>。</p>
+<p>9.<strong>数据类型转换</strong></p>
+<ul>
+<li><p>转换为字符串类型</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>toString()</td>
+<td>转成字符串</td>
+<td>var num =1;console.log(num.toString());</td>
+</tr>
+<tr>
+<td>String()强制转换</td>
+<td>转成字符串</td>
+<td>var num =1;console.log(String(num));</td>
+</tr>
+<tr>
+<td>加号拼接字符串</td>
+<td>和字符串拼接的结果都是字符串</td>
+<td>var num = 1;console.log(num+’我是字符串’);</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>转换为数字型</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>parseInt(string)函数</td>
+<td>将string类型转成整数数值型</td>
+<td>parseInt(‘78’)</td>
+</tr>
+<tr>
+<td>parseFloat(string)函数</td>
+<td>将string类型转成浮点数数值型</td>
+<td>parseFloat(‘1.23’)</td>
+</tr>
+<tr>
+<td>Number()强制转换</td>
+<td>将string类型转换为数值型</td>
+<td>Number(‘11’)</td>
+</tr>
+<tr>
+<td>js隐式转换（- * /）</td>
+<td>利用算数运算隐式转换为数值型</td>
+<td>‘12’-0</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>转换为布尔型</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Boolean()函数</td>
+<td>其他类型转换成布尔型</td>
+<td>Boolean(‘true’);</td>
+</tr>
+</tbody></table>
+<p>代表空、否定的值会被转换为false，如’’、0、NaN、null、undefined;其余值都会被转换为true。</p>
+</li>
+</ul>
+</li>
+<li><p>复杂数据类型(Object)</p>
+<p>10.算术运算符</p>
+</li>
+</ul>
+<p>​    前置递增和后置递增区别</p>
+<p>​    后置：先原值计算，后自加</p>
+<p>​    前置：先自加，后运算。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> num = <span class="hljs-number">10</span>;<br>        <span class="hljs-comment">// console.log(num++);//10</span><br>        <span class="hljs-comment">// console.log(++num);//12</span><br>        <span class="hljs-built_in">console</span>.log(num++ + ++num); <span class="hljs-comment">//1.num++ = 10 num = 11 2. num = 12 ++num = 12</span><br></code></pre></td></tr></table></figure>
+<p>​    11.比较运算符</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>作用</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>赋值</td>
+<td>把右边给左边</td>
+</tr>
+<tr>
+<td>==</td>
+<td>判断</td>
+<td>判断两边值是否相等（此时有隐式类型转换）</td>
+</tr>
+<tr>
+<td>===</td>
+<td>全等</td>
+<td>判断两边的值和数据类型是否完全相等</td>
+</tr>
+</tbody></table>
+<p>​    12.逻辑运算符</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;&amp;</td>
+<td>逻辑与 and</td>
+<td>true&amp;&amp;false</td>
+</tr>
+<tr>
+<td>||</td>
+<td>逻辑或 or</td>
+<td>true||false</td>
+</tr>
+<tr>
+<td>！</td>
+<td>逻辑非</td>
+<td>!true</td>
+</tr>
+</tbody></table>
+<ul>
+<li>逻辑与短路运算</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//如果表达式1结果为真，则返回表达式2；如果表达式1为假，则返回表达式1</span><br> <span class="hljs-built_in">console</span>.log(<span class="hljs-number">123</span> &amp;&amp; <span class="hljs-number">456</span>);<span class="hljs-comment">//456</span><br> <span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span> &amp;&amp; <span class="hljs-number">456</span>);<span class="hljs-comment">//0</span><br> <span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span> &amp;&amp; <span class="hljs-number">1</span>+<span class="hljs-number">2</span> &amp;&amp; <span class="hljs-number">456</span> * <span class="hljs-number">8899</span>);<span class="hljs-comment">//0</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>逻辑或短路运算</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//如果表达式1结果为真，则返回表达式1；如果表达式1为假，则返回表达式2</span><br>       <span class="hljs-built_in">console</span>.log(<span class="hljs-number">123</span> &amp;&amp; <span class="hljs-number">456</span>);<span class="hljs-comment">//456</span><br>       <span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span> &amp;&amp; <span class="hljs-number">456</span>);<span class="hljs-comment">//0</span><br>       <span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span> &amp;&amp; <span class="hljs-number">1</span>+<span class="hljs-number">2</span> &amp;&amp; <span class="hljs-number">456</span> * <span class="hljs-number">8899</span>);<span class="hljs-comment">//0</span><br></code></pre></td></tr></table></figure>
+<p>​    13.运算符优先级</p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>顺序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小括号</td>
+<td>()</td>
+</tr>
+<tr>
+<td>2</td>
+<td>一元运算符</td>
+<td>++  – ！</td>
+</tr>
+<tr>
+<td>3</td>
+<td>算术运算符</td>
+<td>先*/%后+-</td>
+</tr>
+<tr>
+<td>4</td>
+<td>关系运算符</td>
+<td>&gt; &gt;= &lt; &lt;=</td>
+</tr>
+<tr>
+<td>5</td>
+<td>相等运算符</td>
+<td>==   !=  ===  !==</td>
+</tr>
+<tr>
+<td>6</td>
+<td>逻辑运算符</td>
+<td>先&amp;&amp;后||</td>
+</tr>
+<tr>
+<td>7</td>
+<td>赋值运算符</td>
+<td>=</td>
+</tr>
+<tr>
+<td>8</td>
+<td>逗号运算符</td>
+<td>，</td>
+</tr>
+</tbody></table>
+<h3 id="4-流程控制"><a href="#4-流程控制" class="headerlink" title="4.流程控制"></a>4.流程控制</h3><p>​    流程控制主要有三种结构，分别是顺序结构、分支结构（if-else if语句、switch）和循环结构。</p>
+<pre><code> **1.if语句**</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> year = prompt(<span class="hljs-string">&#x27;请输入要检测的年份&#x27;</span>)<br>       <span class="hljs-keyword">if</span> (year % <span class="hljs-number">4</span> == <span class="hljs-number">0</span> &amp;&amp; year % <span class="hljs-number">100</span> != <span class="hljs-number">0</span> || year % <span class="hljs-number">400</span>) &#123;<br>           alert(year + <span class="hljs-string">&#x27;年是闰年&#x27;</span>) <br>       &#125; <span class="hljs-keyword">else</span> &#123;<br>           alert(year + <span class="hljs-string">&#x27;年是平年&#x27;</span>)<br>       &#125;<br></code></pre></td></tr></table></figure>
+<p>​    <strong>2.三元表达式</strong></p>
+<p>​        <strong>语法结构：条件表达式 ? 表达式1 ： 表达式2</strong></p>
+<p>​        如果条件表达式结果为真 则 返回表达式1 的值，如果条件表达式结果为假 则返回表达式2 的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> num = <span class="hljs-number">10</span>;<br><span class="hljs-built_in">console</span>.log(num &gt; <span class="hljs-number">5</span> ? <span class="hljs-string">&#x27;是的&#x27;</span> : <span class="hljs-string">&#x27;不是的&#x27;</span>)<span class="hljs-comment">//是的</span><br><br> <span class="hljs-keyword">var</span> num = prompt(<span class="hljs-string">&#x27;请输入一个数字&#x27;</span>)<br>        alert(num &gt;= <span class="hljs-number">10</span> ? num : <span class="hljs-string">&#x27;0&#x27;</span>+num)<br></code></pre></td></tr></table></figure>
+<p>​    <strong>3.switch语句</strong>    </p>
+<p>​        switch语句也是多分支语句，它用于基于不同的条件来执行不同的代码。当要针对变量设置一系列的特定值的选项时，就可以使用switch。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">switch</span>(表达式)&#123;<br>       <span class="hljs-keyword">case</span> value1:<br>       		执行语句<span class="hljs-number">1</span>；<br>       <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> value2:<br>       		执行语句<span class="hljs-number">2</span>；<br>       <span class="hljs-keyword">break</span>;<br>       ....<br>       <span class="hljs-keyword">default</span>:<br>       		执行最后的语句；<br>       &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> fruit  = prompt(<span class="hljs-string">&#x27;请输入要查询的水果&#x27;</span>)<br>       <span class="hljs-keyword">switch</span> (fruit) &#123;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;榴莲&#x27;</span>:<br>               alert(<span class="hljs-string">&#x27;35元/斤&#x27;</span>)<br>               <span class="hljs-keyword">break</span>;<br>               <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;苹果&#x27;</span>:<br>               alert(<span class="hljs-string">&#x27;5元/斤&#x27;</span>)<br>               <span class="hljs-keyword">break</span>;<br>               <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;香蕉&#x27;</span>:<br>               alert(<span class="hljs-string">&#x27;3元/斤&#x27;</span>)<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">default</span>:<br>               alert(<span class="hljs-string">&#x27;没有这个水果&#x27;</span>)<br>       &#125;<br></code></pre></td></tr></table></figure>
+<p>​    <strong>4.switch语句和if else if语句的区别</strong></p>
+<ul>
+<li>​    switch…case语句通常处理case为比较确定值的情况，而if…else..语句更加灵活，常用于范围判断。</li>
+<li>switch语句进行条件判断后直接执行到程序的条件语句，效率更高。而if…else语句有几种条件，就得判断多少次。</li>
+<li>当分支较少时，if…else语句的执行效率比switch语句高。</li>
+<li>当分支较多时，switch语句的执行效率比较高，而且结构清晰。</li>
+</ul>
+<h3 id="5-循环结构"><a href="#5-循环结构" class="headerlink" title="5.循环结构"></a>5.循环结构</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//求平均成绩</span><br>        <span class="hljs-keyword">var</span> num = prompt(<span class="hljs-string">&#x27;请输入全班人数&#x27;</span>)<br>        <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= num; i++) &#123;<br>           <span class="hljs-keyword">var</span>  score = prompt(<span class="hljs-string">&#x27;请输入第&#x27;</span>+i+<span class="hljs-string">&#x27;个学生成绩&#x27;</span>)<br>            sum += <span class="hljs-built_in">parseFloat</span>(score)<br>        &#125;<br>        <span class="hljs-keyword">var</span> average = sum / num;<br>        alert(<span class="hljs-string">&#x27;平均成绩为：&#x27;</span>+average)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//双重for循环，打印5行5列的星星</span><br>      <span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;&#x27;</span>;<br>      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>;i &lt;= <span class="hljs-number">5</span>; i++)&#123;<span class="hljs-comment">//外层循环负责打印5行</span><br>          <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">1</span>;j &lt;= <span class="hljs-number">5</span>; j++)&#123;<span class="hljs-comment">//里层循环负责一行打印5个</span><br>              str +=<span class="hljs-string">&#x27;⭐&#x27;</span><br>          &#125;<br>         <span class="hljs-comment">// 如果一行打印完5个就换行</span><br>         str = str + <span class="hljs-string">&#x27;\n&#x27;</span><br>      &#125;<br>      <span class="hljs-built_in">console</span>.log(str);<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//打印倒三角形</span><br>       <span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;&#x27;</span><br>       <span class="hljs-keyword">var</span> row = prompt(<span class="hljs-string">&#x27;请输入打印机几行的倒三角形&#x27;</span>)<br>       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span> ; i &lt;= row ; i++)&#123;<br>           <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = i ; j &lt;= row ; j++)&#123;<br>               str += <span class="hljs-string">&#x27;⭐&#x27;</span><br>           &#125;<br>           str += <span class="hljs-string">&#x27;\n&#x27;</span><br>       &#125;<br>       <span class="hljs-built_in">console</span>.log(str)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//九九乘法表</span><br>    <span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;&#x27;</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span> ; i &lt;= <span class="hljs-number">9</span> ; i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">1</span> ; j &lt;= i; j++)&#123;<br>            str += j + <span class="hljs-string">&#x27;×&#x27;</span> + i + <span class="hljs-string">&#x27;=&#x27;</span> + i *j + <span class="hljs-string">&#x27;\t&#x27;</span><br>        &#125;<br>        str += <span class="hljs-string">&#x27;\n&#x27;</span><br>    &#125;<br>    <span class="hljs-built_in">console</span>.log(str)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//while循环</span><br>       <span class="hljs-keyword">var</span> age = <span class="hljs-number">1</span>;<br>       <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span> ;<br>       <span class="hljs-keyword">while</span> (age &lt;= <span class="hljs-number">100</span>) &#123;<br>           sum += age;<br>           age++;<br>       &#125;<br>       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1到100所有整数的和为：&#x27;</span>+sum)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//do while 循环</span><br>       <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;<br>       <span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>;<br>      <span class="hljs-keyword">do</span> &#123;<br>          sum += i;<br>          i++; <br>      &#125; <span class="hljs-keyword">while</span> (i &lt;= <span class="hljs-number">100</span>);<br>      alert(sum)<br></code></pre></td></tr></table></figure>
+<ul>
+<li>while和do…while可以做更复杂的判断条件，比for循环灵活一些</li>
+<li>while和do…while执行顺序不一样，while先判断后执行，do…while先执行一次，在判断执行。</li>
+<li>while和do…while执行次数不一样，while可能一次也不执行，do…while至少执行一次。</li>
+</ul>
+<h4 id="continue和break"><a href="#continue和break" class="headerlink" title="continue和break"></a>continue和break</h4><p>​    <strong>continue关键字用于立即跳出本次循环，继续下一次循环。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//求1-100之间，除了能被7整除之外的整数的和</span><br>       <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">100</span>; i++) &#123;<br>           <span class="hljs-keyword">if</span>(i % <span class="hljs-number">7</span> == <span class="hljs-number">0</span>)&#123;<br>               <span class="hljs-keyword">continue</span>;<br>           &#125;<br>           sum += i;<br>       &#125;<br>       alert(<span class="hljs-string">&#x27;1-100之间，除了能被7整除之外的整数的和:&#x27;</span>+sum)<span class="hljs-comment">//4315</span><br><br></code></pre></td></tr></table></figure>
+<p>​    <strong>break关键字用于立即跳出整个循环体</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i =<span class="hljs-number">1</span> ; i &lt;= <span class="hljs-number">5</span>; i++)&#123;<br>             <span class="hljs-keyword">if</span>(i == <span class="hljs-number">3</span>)&#123;<br>                 <span class="hljs-keyword">break</span>;<br>             &#125;<br>             <span class="hljs-built_in">console</span>.log(i)<span class="hljs-comment">//1 2</span><br>         &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="6-数组（Array）"><a href="#6-数组（Array）" class="headerlink" title="6.数组（Array）"></a>6.数组（Array）</h3><ol>
+<li><p>数组的两种创建方式</p>
+<ul>
+<li><p>利用new创建数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(); <span class="hljs-comment">//创建一个空的数组</span><br></code></pre></td></tr></table></figure></li>
+<li><p>利用数组字面量创建数组</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>访问数组元素</p>
+<p>数组可以通过索引来访问、设置、修改对应的数组元素，我们可以通过“数组名【索引】”的形式来获取数组中的元素。</p>
+</li>
+<li><p>遍历数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//遍历数组</span><br>           <span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">22</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">77</span>]<br>           <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++ ) &#123;<br>               <span class="hljs-built_in">console</span>.log(arr[i])<br>           &#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>求最大值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> array = [<span class="hljs-number">12</span>,<span class="hljs-number">13</span>,<span class="hljs-number">445</span>,<span class="hljs-number">67</span>,<span class="hljs-number">888</span>,<span class="hljs-number">98</span>];<br>            <span class="hljs-keyword">var</span> max = array[<span class="hljs-number">0</span>];<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; array.length; i++) &#123;<br>              <span class="hljs-keyword">if</span>(array[i] &gt; max)&#123;<br>                  max = array[i];<br>              &#125;<br>            &#125;<br>         alert(<span class="hljs-string">&#x27;数组&#x27;</span>+array+<span class="hljs-string">&#x27;的最大值为：&#x27;</span>+max)<br></code></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="5">
+<li>数组转换为分割字符串</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> array = [<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;blue&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>];<br>       <span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;&#x27;</span>;<br>       <span class="hljs-keyword">var</span> sep = <span class="hljs-string">&#x27;|&#x27;</span><br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; array.length; index++) &#123;<br>          str += array[index] + sep; <br>       &#125;<br>       <span class="hljs-built_in">console</span>.log(str)<br></code></pre></td></tr></table></figure>
+<p>6.数组中新增元素</p>
+<ul>
+<li><p>通过修改length长度新增数组元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> array = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">33</span>,<span class="hljs-number">4</span>,] <br>    array.length = <span class="hljs-number">6</span>;<br>    <span class="hljs-built_in">console</span>.log(array);<span class="hljs-comment">// [1, 2, 33, 4, empty × 2]</span><br>    <span class="hljs-built_in">console</span>.log(array[<span class="hljs-number">4</span>]);<span class="hljs-comment">// undefined</span><br>    <span class="hljs-built_in">console</span>.log(array[<span class="hljs-number">5</span>]);<span class="hljs-comment">// undefined</span><br>    array[<span class="hljs-number">4</span>] = <span class="hljs-number">7</span>; <br>    array[<span class="hljs-number">5</span>] = <span class="hljs-number">6</span>; <br>    <span class="hljs-built_in">console</span>.log(array);<span class="hljs-comment">// (6) [1, 2, 33, 4, 7, 6]</span><br></code></pre></td></tr></table></figure></li>
+<li><p>通过修改数组索引新增数组元素</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"> <br><span class="hljs-keyword">var</span> array = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">33</span>,<span class="hljs-number">4</span>,] <br>array[<span class="hljs-number">4</span>] = <span class="hljs-number">7</span>; <br>     array[<span class="hljs-number">5</span>] = <span class="hljs-number">6</span>; <br>     <span class="hljs-built_in">console</span>.log(array);<span class="hljs-comment">// (6) [1, 2, 33, 4, 7, 6]</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li> 数组练习</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//新建一个数组，里边存放1到10</span><br>        <span class="hljs-keyword">var</span> array = [];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; <span class="hljs-number">10</span>; index++) &#123;<br>            array[index] = index + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-built_in">console</span>.log(array)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//筛选数组</span><br>       <span class="hljs-keyword">var</span> array = [<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,<span class="hljs-number">6</span>,<span class="hljs-number">1</span>,<span class="hljs-number">77</span>,<span class="hljs-number">0</span>,<span class="hljs-number">53</span>,<span class="hljs-number">0</span>,<span class="hljs-number">25</span>,<span class="hljs-number">7</span>];<br>       <span class="hljs-keyword">var</span> newarray = [];<br>       <span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; array.length; index++) &#123;<br>          <span class="hljs-keyword">if</span> (array[index] &gt; <span class="hljs-number">10</span>) &#123;<br>              <span class="hljs-comment">//newarray.push(array[index])</span><br>              <span class="hljs-comment">//newarray[newarray.length] = array [index]</span><br>              newarray[j] = array [index]<br>              j++<br>          &#125;<br>           <br>       &#125;<br>       <span class="hljs-built_in">console</span>.log(newarray)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//删除指定数组元素,把0去掉</span><br>       <span class="hljs-keyword">var</span> array = [<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,<span class="hljs-number">6</span>,<span class="hljs-number">1</span>,<span class="hljs-number">77</span>,<span class="hljs-number">0</span>,<span class="hljs-number">52</span>,<span class="hljs-number">0</span>,<span class="hljs-number">25</span>,<span class="hljs-number">7</span>];<br>       <span class="hljs-keyword">var</span> newArray = [];<br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; array.length; index++) &#123;<br>           <span class="hljs-keyword">if</span>(array[index] != <span class="hljs-number">0</span>)&#123;<br>               newArray[newArray.length] = array[index]<br>           &#125;<br>       &#125;    <br>       <span class="hljs-built_in">console</span>.log(newArray)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//反转数组</span><br>   <span class="hljs-keyword">var</span> array = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]<br>       <span class="hljs-keyword">var</span> newarray = []<br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = array.length -<span class="hljs-number">1</span>; index &gt;= <span class="hljs-number">0</span> ; index--) &#123;<br>           newarray[newarray.length] = array[index]    <br>       &#125;<br>       <span class="hljs-built_in">console</span>.log(newarray)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//冒泡排序</span><br>        <span class="hljs-keyword">var</span> array = [<span class="hljs-number">12</span>,<span class="hljs-number">333</span>,<span class="hljs-number">56</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">66</span>]<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; array.length - <span class="hljs-number">1</span>; index++) &#123;<span class="hljs-comment">//外层循环控制趟数</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;array.length - index -<span class="hljs-number">1</span>; i++)&#123;<span class="hljs-comment">//里层循环控制每趟交换次数</span><br>                <span class="hljs-keyword">if</span>(array[i] &gt; array[i + <span class="hljs-number">1</span>])&#123;<br>                    <span class="hljs-keyword">var</span> temp = array[i]<br>                    array[i] = array[i + <span class="hljs-number">1</span>];<br>                    array[i + <span class="hljs-number">1</span>] = temp;<br>                        &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-built_in">console</span>.log(array)<br></code></pre></td></tr></table></figure>
+<h3 id="7-函数"><a href="#7-函数" class="headerlink" title="7.函数"></a>7.函数</h3><p>​    <strong>函数：就是封装了一段可被重复调用执行的代码块。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//声明函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> 函数名(<span class="hljs-params">形参<span class="hljs-number">1</span>，形参<span class="hljs-number">2.</span>..</span>)</span>&#123;<br>	<span class="hljs-comment">//函数体</span><br>          <span class="hljs-keyword">return</span> 需要返回的结果<br>&#125;<br><span class="hljs-comment">//调用函数</span><br>函数名(实参<span class="hljs-number">1</span>,实参<span class="hljs-number">2.</span>..)；<br></code></pre></td></tr></table></figure>
+<h4 id="函数形参和实参匹配问题"><a href="#函数形参和实参匹配问题" class="headerlink" title="函数形参和实参匹配问题"></a><strong>函数形参和实参匹配问题</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getsum</span>(<span class="hljs-params">num1,num2</span>)</span>&#123;<br>          <span class="hljs-built_in">console</span>.log(num1+num2)<br>      &#125;<br>      getsum(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);<br>      <span class="hljs-comment">//如果实参的个数和形参的个数一致，则正常输出结果。</span><br>      getsum(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);<br>      <span class="hljs-comment">//如果实参的个数大于形参的个数，则会取到形参的个数。</span><br>      getsum(<span class="hljs-number">1</span>);<span class="hljs-comment">//NaN</span><br>      <span class="hljs-comment">//如果实参的个数小于形参的个数，则多余的形参定义为undefined。</span><br><br></code></pre></td></tr></table></figure>
+<p>​    <strong>函数练习</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//利用函数求任意一个数组中的最大值</span><br>        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMax</span>(<span class="hljs-params">array</span>)</span>&#123;<br>            <span class="hljs-keyword">var</span> Max = array[<span class="hljs-number">0</span>]<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; array.length; index++) &#123;<br>                <span class="hljs-keyword">if</span>(array[index] &gt; Max)&#123;<br>                     Max = array[index];<br>                &#125; <br>            &#125;<br>            <span class="hljs-keyword">return</span> Max;<br>        &#125;<br>       <span class="hljs-built_in">console</span>.log(getMax([<span class="hljs-number">22</span>,<span class="hljs-number">33</span>,<span class="hljs-number">4</span>,<span class="hljs-number">55</span>])) <br></code></pre></td></tr></table></figure>
+<h4 id="函数返回值注意事项"><a href="#函数返回值注意事项" class="headerlink" title="函数返回值注意事项"></a><strong>函数返回值注意事项</strong></h4><ul>
+<li>如果函数没有return，则返回undefined。</li>
+<li>break,continue,return的区别</li>
+</ul>
+<p><strong><em>continue关键字用于立即跳出本次循环，继续下一次循环。（for、while）</em></strong></p>
+<p><strong><em>break关键字用于立即跳出整个循环体（for、while）</em></strong></p>
+<p><strong><em>return关键字不仅可以退出循环，还能够返回return语句中的值，同时还可以结束当前的函数体内的代码。</em></strong></p>
+<h4 id="arguments的使用"><a href="#arguments的使用" class="headerlink" title="arguments的使用"></a>arguments的使用</h4><p>​    当我们不确定有多少个参数传递的时候，可以用<strong>arguments</strong>来获取。在Javascript中，arguments实际上它是当前函数的一个内置对象。所有的函数都内置了一个arguments对象，arguments对象中存储了传递的所有实参。</p>
+<p>​    arguments展示形式是一个伪数组，因此可以进行遍历。伪数组具有以下特点：</p>
+<ul>
+<li><p>具有length属性</p>
+</li>
+<li><p>按索引方式存储数据</p>
+</li>
+<li><p>不具有数组的push、pop等方法</p>
+</li>
+<li><p>可以按照数组的方式遍历arguments</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>)</span>&#123;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>)<span class="hljs-comment">//里面存储了所有传递过来的实参</span><br>&#125;<br>fn(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript">  <br><span class="hljs-comment">//arguments的使用 利用函数求任意个数的最大值</span><br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setMax</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">var</span> Max = <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; <span class="hljs-built_in">arguments</span>.length; index++) &#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">arguments</span>[index] &gt; Max)&#123;<br>                Max = <span class="hljs-built_in">arguments</span>[index]<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> Max<br>    &#125;<br>  <span class="hljs-keyword">var</span> getMax =   setMax(<span class="hljs-number">129</span>,<span class="hljs-number">222</span>,<span class="hljs-number">444</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">66666</span>,<span class="hljs-number">7777</span>,<span class="hljs-number">99999</span>)<br>    <span class="hljs-built_in">console</span>.log(getMax )<br></code></pre></td></tr></table></figure>
+<h4 id="函数的两种声明方式"><a href="#函数的两种声明方式" class="headerlink" title="函数的两种声明方式"></a>函数的两种声明方式</h4></li>
+</ul>
+<p>1.利用函数关键字自定义函数（命名函数）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>)</span>&#123;<br><br>&#125;<br>fn();<br></code></pre></td></tr></table></figure>
+<p>2.函数表达式(匿名函数)</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">var</span> 变量名 = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="8-作用域（es6）之前"><a href="#8-作用域（es6）之前" class="headerlink" title="8.作用域（es6）之前"></a>8.作用域（es6）之前</h3><ul>
+<li>全局作用域（整个script标签或者是一个单独的js文件）</li>
+<li>局部作用域(在函数内部就是局部作用域，只在函数内部起作用和效果)</li>
+<li>全局变量（在全局作用域下的变量，如果在函数内部没有声明，直接赋值的变量也属于全局变量）</li>
+<li>局部变量（在局部作用域下的变量，只能在函数内部使用；函数的形参也可以看作局部变量）</li>
+<li>全局变量只有在浏览器关闭的时候才会销毁，比较占内存</li>
+<li>局部变量当我们的程序执行完毕就会销毁，比较节约资源</li>
+</ul>
+<h4 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h4><p>​    内部函数访问外部函数的变量，采取的是链式查找的方式来决定取那个值，这种结构我们成为作用域链。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/03/31/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript学习笔记4</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/27/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">
+                        <span class="hidden-mobile">JavaScript学习笔记2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "icBvU7spvG0iawymtNOxesQq-gzGzoHsz",
+          app_key: "Hc7KXd3ix4QaO9Pa5aPeKpAv",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a9e99669af27c2088ada70d9eeab9aaa";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
