@@ -281,7 +281,7 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> age = <span class="hljs-number">10</span>;<br>age = <span class="hljs-string">&#x27;十&#x27;</span>;<br></code></pre></td></tr></table></figure>
 <ul>
-<li><p>简单数据类型（Number,String,Boolean,Undefined,Null）</p>
+<li><p>简单数据类型（<strong>Number,String,Boolean,Undefined,Null</strong>）</p>
 <p>1.Js中八进制前面加0，十六进制前面加0x。</p>
 <p>2.<strong>isNaN()，</strong>用来判断变量是否为非数字类型，如果是数字返回false，如果不是数字返回的是true。</p>
 <p><strong>3.字符串转义符</strong></p>
@@ -405,12 +405,14 @@
 </ul>
 </li>
 <li><p>复杂数据类型(Object)</p>
-<p>10.算术运算符</p>
+<p>通过new关键字创建的对象（系统对象，自定义对象），如Object、Array、Date等。</p>
+<p><strong>简单数据类型存放在栈里面，复杂数据类型存放在堆中（先在栈里面存放地址，然后这个地址指向堆里面的数据）</strong></p>
 </li>
 </ul>
-<p>​    前置递增和后置递增区别</p>
-<p>​    后置：先原值计算，后自加</p>
-<p>​    前置：先自加，后运算。</p>
+<p>  10.算术运算符</p>
+<p>  ​    前置递增和后置递增区别</p>
+<p>  ​    后置：先原值计算，后自加</p>
+<p>  ​    前置：先自加，后运算。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> num = <span class="hljs-number">10</span>;<br>        <span class="hljs-comment">// console.log(num++);//10</span><br>        <span class="hljs-comment">// console.log(++num);//12</span><br>        <span class="hljs-built_in">console</span>.log(num++ + ++num); <span class="hljs-comment">//1.num++ = 10 num = 11 2. num = 12 ++num = 12</span><br></code></pre></td></tr></table></figure>
 <p>​    11.比较运算符</p>
 <table>

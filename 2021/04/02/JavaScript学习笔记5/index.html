@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="chenjian">
+  <meta name="keywords" content="">
+  <title>JavaScript学习5 - Fly</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":"truefooter","baidu":"a9e99669af27c2088ada70d9eeab9aaa","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>在云端易逍遥</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/img13.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript学习5">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-02 18:35" pubdate>
+        2021年4月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript学习5</h1>
+            
+            <div class="markdown-body">
+              <h2 id="一、DOM"><a href="#一、DOM" class="headerlink" title="一、DOM"></a>一、DOM</h2><p>​    DOM（Document Object Model——文档对象模型）是用来呈现以及与任意 HTML 或 XML文档交互的API。DOM 是载入到浏览器中的文档模型，以节点树的形式来表现文档，每个节点代表文档的构成部分（例如:页面元素、字符串或注释等等）。</p>
+<h3 id="1-获取元素"><a href="#1-获取元素" class="headerlink" title="1.获取元素"></a>1.获取元素</h3><h4 id="如何获取元素"><a href="#如何获取元素" class="headerlink" title="如何获取元素"></a>如何获取元素</h4><ul>
+<li><p>根据ID获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;id&#x27;</span>);<br><span class="hljs-built_in">console</span>.dir();<span class="hljs-comment">//可以打印返回的元素对象，更好的查看里面的属性和方法</span><br></code></pre></td></tr></table></figure></li>
+<li><p>根据标签名获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">&#x27;name&#x27;</span>);<br><span class="hljs-comment">//返回值是 获取过来元素对象的集合 以伪数组的形式存储（无论有没有这个对象）</span><br>element.getElementsByTagName(<span class="hljs-string">&#x27;name&#x27;</span>);<br><span class="hljs-comment">//可以获取某个元素内部所有指定标签名的子元素</span><br><span class="hljs-comment">//父元素必须是单个对象（必须指明是哪一个元素对象），获取的时候不包括父元素自己。</span><br><span class="hljs-keyword">var</span> ol = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;ol&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(ol.getElementsByTagName(<span class="hljs-string">&#x27;li&#x27;</span>))<br></code></pre></td></tr></table></figure></li>
+<li><p>通过HTML5新增的方法获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">&#x27;name&#x27;</span>);<span class="hljs-comment">//根据类名返回元素对象集合</span><br>doucument.querySelector(<span class="hljs-string">&#x27;选择器&#x27;</span>);<span class="hljs-comment">//根据指定选择器返回第一个元素对象</span><br><span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&#x27;选择器&#x27;</span>);<span class="hljs-comment">//根据指定选择器返回所有元素对象</span><br></code></pre></td></tr></table></figure></li>
+<li><p>特殊元素获取（body,html）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//获取body标签</span><br><span class="hljs-built_in">document</span>.body;<span class="hljs-comment">// 返回body元素对象</span><br><span class="hljs-comment">//获取html标签</span><br><span class="hljs-built_in">document</span>.documentElement;<span class="hljs-comment">// 返回html元素对象</span><br></code></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h3 id="2-事件基础"><a href="#2-事件基础" class="headerlink" title="2.事件基础"></a>2.事件基础</h3><h4 id="2-1事件是由三部分组成，事件源、事件类型、事件处理程序。"><a href="#2-1事件是由三部分组成，事件源、事件类型、事件处理程序。" class="headerlink" title="2.1事件是由三部分组成，事件源、事件类型、事件处理程序。"></a>2.1事件是由三部分组成，事件源、事件类型、事件处理程序。</h4><ul>
+<li>​    事件源：事件被触发的对象</li>
+<li>​    事件类型：如何触发，什么事件，比如鼠标点击事件（onclick）还是鼠标经过，还是键盘按下。</li>
+<li>​    事件处理程序：通过一个函数赋值的方式完成。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;body&gt;<br>    &lt;button id=<span class="hljs-string">&quot;btn&quot;</span>&gt;唐伯虎&lt;/button&gt;<br>    &lt;script&gt;<br>      <span class="hljs-keyword">var</span> btn = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;btn&quot;</span>);<br>            btn.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>                alert(<span class="hljs-string">&#x27;点秋香&#x27;</span>)<br>            &#125;<br>    &lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<h4 id="2-2执行事件的步骤"><a href="#2-2执行事件的步骤" class="headerlink" title="2.2执行事件的步骤"></a>2.2执行事件的步骤</h4><ol>
+<li><p>获取事件源</p>
+</li>
+<li><p>注册事件（绑定事件）</p>
+</li>
+<li><p>添加事件处理程序（采取函数赋值的形式）</p>
+<h4 id="2-3常见的鼠标事件"><a href="#2-3常见的鼠标事件" class="headerlink" title="2.3常见的鼠标事件"></a>2.3常见的鼠标事件</h4><table>
+<thead>
+<tr>
+<th>鼠标事件</th>
+<th>触发条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onclick</td>
+<td>鼠标点击左键触发</td>
+</tr>
+<tr>
+<td>onmouseover</td>
+<td>鼠标经过触发</td>
+</tr>
+<tr>
+<td>onmouseout</td>
+<td>鼠标离开触发</td>
+</tr>
+<tr>
+<td>onfocus</td>
+<td>获得鼠标焦点出发</td>
+</tr>
+<tr>
+<td>onblur</td>
+<td>失去鼠标焦点触发</td>
+</tr>
+<tr>
+<td>onmousemove</td>
+<td>鼠标移动触发</td>
+</tr>
+<tr>
+<td>onmouseup</td>
+<td>鼠标弹起触发</td>
+</tr>
+<tr>
+<td>onmousedown</td>
+<td>鼠标按下触发</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h3 id="3-操作元素"><a href="#3-操作元素" class="headerlink" title="3.操作元素"></a>3.操作元素</h3><h4 id="3-1改变元素内容"><a href="#3-1改变元素内容" class="headerlink" title="3.1改变元素内容"></a>3.1改变元素内容</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">element.innerText <span class="hljs-regexp">//</span>从起始位置到终止位置的内容，会去除html标签，同时空格和换行也会去掉<br>element.innerHTML <span class="hljs-regexp">//</span>从起始位置到终止位置的内容，包括html标签，同时保留空格和换行<br></code></pre></td></tr></table></figure>
+<h4 id="3-2常用元素的属性操作"><a href="#3-2常用元素的属性操作" class="headerlink" title="3.2常用元素的属性操作"></a>3.2常用元素的属性操作</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">src、href、id、alt、title<br><br><span class="hljs-keyword">var</span> img = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;img&#x27;</span>)<br>   img.src = <span class="hljs-string">&quot;./2.jpg&quot;</span><br></code></pre></td></tr></table></figure>
+<h4 id="3-3表单元素的属性操作"><a href="#3-3表单元素的属性操作" class="headerlink" title="3.3表单元素的属性操作"></a>3.3表单元素的属性操作</h4><p>​    利用DOM可以操作如下表单元素的属性：type、value、checked、selected、disabled</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br>&lt;body&gt;<br>    &lt;button&gt;点击&lt;/button&gt;<br>    &lt;input type=<span class="hljs-string">&quot;text&quot;</span> value=<span class="hljs-string">&quot;输入内容&quot;</span>&gt;<br>    &lt;script&gt;<br>        <span class="hljs-keyword">var</span> btn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;button&#x27;</span>);<br>        <span class="hljs-keyword">var</span> input = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;input&#x27;</span>)<br>        btn.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>            input.value = <span class="hljs-string">&#x27;点击成功&#x27;</span><br>            <span class="hljs-comment">//按钮被禁用</span><br>            btn.disabled = <span class="hljs-literal">true</span><br>        &#125;<br>    &lt;/script&gt;<br>&lt;/body&gt;<br></code></pre></td></tr></table></figure>
+<p>​    <strong>显示隐藏密码明文案例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs javascript"> &lt;style&gt;<br>        .box&#123;<br>            position: relative;<br>            width: 400px;<br>            border-bottom: 1px solid #ccc;<br>            margin: 100px auto;<br>        &#125;<br>        .box input&#123;<br>            width: 370px;<br>            height: 30px;<br>            border: <span class="hljs-number">0</span>;<br>            outline: none;<br>        &#125;<br>        .box img &#123;<br>            width: 24px;<br>            position: absolute;<br>            right: 10px;<br>            width: 20px;<br>            top: 8px;<br>        &#125;<br>    &lt;/style&gt;<br>&lt;body&gt;<br>    &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;box&quot;</span>&gt;<br>        &lt;label <span class="hljs-keyword">for</span>=<span class="hljs-string">&quot;&quot;</span>&gt;<br>            &lt;img src=<span class="hljs-string">&quot;./close.svg&quot;</span> id=<span class="hljs-string">&quot;eye&quot;</span>&gt;<br>        &lt;/label&gt;<br>        &lt;input type=<span class="hljs-string">&quot;password&quot;</span> name=<span class="hljs-string">&quot;&quot;</span> id=<span class="hljs-string">&quot;password&quot;</span>&gt;<br>       <br>    &lt;/div&gt;<br>    &lt;script&gt;<br>        <span class="hljs-keyword">var</span> flag = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">var</span> input = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;password&#x27;</span>)<br>        <span class="hljs-keyword">var</span> img = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;eye&#x27;</span>)<br>        img.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>            <span class="hljs-keyword">if</span> (flag == <span class="hljs-number">0</span>) &#123;<br>                input.type = <span class="hljs-string">&#x27;password&#x27;</span><br>                img.src = <span class="hljs-string">&#x27;./close.svg&#x27;</span><br>                flag = <span class="hljs-number">1</span><br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (flag == <span class="hljs-number">1</span>)&#123;<br>                input.type = <span class="hljs-string">&#x27;text&#x27;</span><br>                img.src = <span class="hljs-string">&#x27;./open.svg&#x27;</span><br>                flag = <span class="hljs-number">0</span> <br>            &#125;<br>        &#125;<br>    &lt;/script&gt;<br>&lt;/body&gt;<br></code></pre></td></tr></table></figure>
+<h4 id="3-4样式属性操作"><a href="#3-4样式属性操作" class="headerlink" title="3.4样式属性操作"></a>3.4样式属性操作</h4><p>​    我们可以通过JS修改元素的大小、颜色、位置等样式。</p>
+<ul>
+<li><p>element.style  行内样式操作</p>
+</li>
+<li><p>element.className  类名样式操作</p>
+<p><strong>JS修改style样式操作，产生的是行内样式，css权重比较高。</strong></p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>        div&#123;<br>            width: 200px;<br>            height: 100px;<br>            background-color: aquamarine;<br>        &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">        <span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;div&#x27;</span>)</span><br><span class="javascript">        div.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            div.style.backgroundColor = <span class="hljs-string">&#x27;red&#x27;</span>;</span><br><span class="javascript">            div.style.width = <span class="hljs-string">&#x27;900px&#x27;</span></span><br>        &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p> <strong>关闭二维码案例</strong></p>
+<p><strong>display:block;显示元素</strong></p>
+<p><strong>display :none;隐藏元素</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br><span class="css">        <span class="hljs-selector-class">.box</span>&#123;</span><br>            position: relative;<br>            width: 150px;<br>            height: 80px;<br><span class="css">            <span class="hljs-selector-tag">display</span><span class="hljs-selector-pseudo">:block</span>;</span><br>        &#125;<br><span class="css">        <span class="hljs-selector-id">#cc</span>&#123;</span><br>            position: absolute;<br>            width: 20px;<br>            height: 30px;<br>        &#125;<br><span class="css">        <span class="hljs-selector-id">#QRcode</span>&#123;</span><br>            position: absolute;<br>            left: 10px;<br>            width: 100px;<br>            height: 70px;<br>        &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./chahao.svg&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;cc&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./QRcode.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;QRcode&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">        <span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;div&#x27;</span>)</span><br><span class="javascript">        <span class="hljs-keyword">var</span> cc = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;cc&#x27;</span>)</span><br><span class="javascript">        <span class="hljs-keyword">var</span> QRcode = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;QRcode&#x27;</span>)</span><br><span class="javascript">        cc.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">           div.style.display = <span class="hljs-string">&#x27;none&#x27;</span></span><br>        &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/07/Vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/31/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04/">
+                        <span class="hidden-mobile">JavaScript学习笔记4</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "icBvU7spvG0iawymtNOxesQq-gzGzoHsz",
+          app_key: "Hc7KXd3ix4QaO9Pa5aPeKpAv",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a9e99669af27c2088ada70d9eeab9aaa";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

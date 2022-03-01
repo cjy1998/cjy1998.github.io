@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.5k 字
+      3.2k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      34
+      42
        分钟
     </span>
   
@@ -480,8 +480,99 @@
 <p><strong><code>splice()</code></strong> 方法通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">array.splice(start[, deleteCount[, item1[, item2[, ...]]]])<br><span class="hljs-comment">//start 指定修改的开始位置（从0计数）。如果超出了数组的长度，则从数组末尾开始添加内容；如果是负值，则表示从数组末位开始的第几位（从-1计数，这意味着-n是倒数第n个元素并且等价于array.length-n）；如果负数的绝对值大于数组的长度，则表示开始位置为第0位。</span><br><span class="hljs-comment">//deleteCount 可选 整数，表示要移除的数组元素的个数。如果 deleteCount 大于 start 之后的元素的总数，则从 start 后面的元素都将被删除（含第 start 位）。</span><br>   <span class="hljs-comment">//如果 deleteCount 被省略了，或者它的值大于等于array.length - start(也就是说，如果它大于或者等于start之后的所有元素的数量)，那么start之后数组的所有元素都会被删除。</span><br>    <span class="hljs-comment">//如果 deleteCount 是 0 或者负数，则不移除元素。这种情况下，至少应添加一个新元素。</span><br><span class="hljs-comment">//item1, item2, ... 可选</span><br>    <span class="hljs-comment">//要添加进数组的元素,从start 位置开始。如果不指定，则 splice() 将只删除数组元素。</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> months = [<span class="hljs-string">&#x27;Jan&#x27;</span>, <span class="hljs-string">&#x27;March&#x27;</span>, <span class="hljs-string">&#x27;April&#x27;</span>, <span class="hljs-string">&#x27;June&#x27;</span>];<br>months.splice(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;Feb&#x27;</span>);<br><span class="hljs-comment">// inserts at index 1</span><br><span class="hljs-built_in">console</span>.log(months);<br><span class="hljs-comment">// expected output: Array [&quot;Jan&quot;, &quot;Feb&quot;, &quot;March&quot;, &quot;April&quot;, &quot;June&quot;]</span><br><br>months.splice(<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;May&#x27;</span>);<br><span class="hljs-comment">// replaces 1 element at index 4</span><br><span class="hljs-built_in">console</span>.log(months);<br><span class="hljs-comment">// expected output: Array [&quot;Jan&quot;, &quot;Feb&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;]</span><br><br></code></pre></td></tr></table></figure>
-<h4 id="3-4字符串对象（基本包装类型）"><a href="#3-4字符串对象（基本包装类型）" class="headerlink" title="3.4字符串对象（基本包装类型）"></a>3.4字符串对象（基本包装类型）</h4></li>
+<h4 id><a href="#" class="headerlink" title></a></h4><h4 id="3-4字符串对象（基本包装类型）"><a href="#3-4字符串对象（基本包装类型）" class="headerlink" title="3.4字符串对象（基本包装类型）"></a>3.4字符串对象（基本包装类型）</h4><p>​    为了方便操作基本数据类型，JavaScript还提供了三个特殊的引用类型：<strong>String、Number和Boolean。</strong></p>
+<p>​    基本包装类型就是把简单数据类型包装成为复杂数据类型，这样<strong>基本数据类型就有了属性和方法。</strong></p>
+<p>​    <strong>字符串的不可变：指的是里面的值不可变，虽然看上去可以改变内容，但其实是地址变了，内存中新开辟了一个内存空间。</strong></p>
+<p>​    字符串中所有的方法，都不会修改字符串本身（字符串是不可变的），操作完成会返回一个新的字符串。</p>
+</li>
 </ol>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>indexOf(‘要查找的元素’，[起始位置])</td>
+<td>数组中查找给定元素的第一个索引</td>
+<td>若存在返回索引号，不存在返回-1</td>
+</tr>
+<tr>
+<td>lastIndexOf()</td>
+<td>数组中查找给定元素的最后一个索引</td>
+<td>若存在返回索引号，不存在返回-1</td>
+</tr>
+</tbody></table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//查找字符串&quot;abcoefoxyozzopp&quot;中所有o出现的位置以及次数</span><br>       <span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;abcoefoxyozzopp&#x27;</span>;<br>        <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;<br>       <span class="hljs-comment">// for (let index = 0; index &lt; str.length; index++) &#123;</span><br>       <span class="hljs-comment">//    if(str[index] === &#x27;o&#x27;)&#123;</span><br>       <span class="hljs-comment">//        console.log(index)</span><br>       <span class="hljs-comment">//        i++;</span><br>       <span class="hljs-comment">//    &#125;</span><br>       <span class="hljs-comment">// &#125;</span><br>       <span class="hljs-comment">// console.log(i)</span><br>       <br>           <span class="hljs-keyword">var</span> index  = str.indexOf(<span class="hljs-string">&#x27;o&#x27;</span>);<br>           <span class="hljs-keyword">while</span>(index !== -<span class="hljs-number">1</span>) &#123;<br>               <span class="hljs-built_in">console</span>.log(index);<br>               i++;<br>               index = str.indexOf(<span class="hljs-string">&#x27;o&#x27;</span>,index + <span class="hljs-number">1</span>)<br>           &#125;<br>           <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;o出现的次数是：&#x27;</span>+i)<br></code></pre></td></tr></table></figure>
+<p>​    <strong>根据位置返回字符</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+<th>使用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>charAt(index)</td>
+<td>返回指定位置的字符（index字符串的索引号）</td>
+<td>str.charAt()</td>
+</tr>
+<tr>
+<td>charCodeAt(index)</td>
+<td>获取指定位置处字符的ASCII码</td>
+<td>str.chartCodeAt()</td>
+</tr>
+<tr>
+<td>str[index]</td>
+<td>获取指定位置处的字符</td>
+<td>HTML5，IE8+支持</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-comment">//判断一个字符串‘&#x27;abcoefoxyozzopp’中出现次数最多的字符，并统计其次数。</span><br><span class="hljs-comment">//核心算法：利用chartAt()遍历这个字符串</span><br><span class="hljs-comment">//把每个字符都存储给对象，如果对象没有该属性，就为1，如果存在了就+1</span><br><span class="hljs-comment">//遍历对象得到最大值和该字符</span><br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;abcoefoxyozzopp&#x27;</span>;<br><span class="hljs-keyword">var</span> s =&#123;&#125;;<br><span class="hljs-keyword">for</span> (let index = <span class="hljs-number">0</span>; index &lt; str.length; index++) &#123;<br>   <span class="hljs-keyword">var</span> chars = str.charAt(index)<br>   <span class="hljs-keyword">if</span>(s[chars])&#123;<br>    s[chars]++;<br>   &#125;<span class="hljs-keyword">else</span>&#123;<br>    s[chars] = <span class="hljs-number">1</span>;<br>   &#125;<br>&#125;<br><span class="hljs-keyword">var</span> max = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> ch = <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> key in s) &#123;<br>    <span class="hljs-keyword">if</span>(s[key] &gt; max)&#123;<br>        max = s[key];<br>        ch = key ;<br>    &#125;<br>&#125;<br>console.log(max)<br>console.log(<span class="hljs-string">&#x27;出现次数最多的字符为&#x27;</span>+ch)<br></code></pre></td></tr></table></figure>
+<p>​    <strong>字符串操作方法</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>concat(str1,str2…)</td>
+<td>连接两个或多个字符串，不影响原数组</td>
+</tr>
+<tr>
+<td>slice(start，end)</td>
+<td>字符串截取（end处取不到）</td>
+</tr>
+<tr>
+<td>substr(start,length)</td>
+<td>从start位置开始，lengtn取得个数</td>
+</tr>
+<tr>
+<td>substring(start，end)</td>
+<td>字符串截取（end处取不到）,不接受负值</td>
+</tr>
+<tr>
+<td>replace(‘被替换的字符’,’替换为的字符’)</td>
+<td>替换字符，只会替换第一个字符</td>
+</tr>
+<tr>
+<td>split(‘分隔符’)</td>
+<td>字符转换为数组</td>
+</tr>
+<tr>
+<td>toUpperCase()</td>
+<td>转换大写</td>
+</tr>
+<tr>
+<td>toLowerCase()</td>
+<td>转换小写</td>
+</tr>
+</tbody></table>
 
             </div>
             <hr>
@@ -514,9 +605,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/07/Vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                      <a href="/2021/04/02/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vue学习笔记</span>
+                        <span class="hidden-mobile">JavaScript学习5</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

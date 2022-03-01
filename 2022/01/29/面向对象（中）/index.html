@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      2.8k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      31
        分钟
     </span>
   
@@ -227,7 +227,7 @@
             <h1 style="display: none">面向对象（中）</h1>
             
             <div class="markdown-body">
-              <h3 id="y继承性"><a href="#y继承性" class="headerlink" title="y继承性"></a>y继承性</h3><h4 id="1-继承性的好处"><a href="#1-继承性的好处" class="headerlink" title="1.继承性的好处"></a>1.继承性的好处</h4><ol>
+              <h3 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h3><h4 id="1-继承性的好处"><a href="#1-继承性的好处" class="headerlink" title="1.继承性的好处"></a>1.继承性的好处</h4><ol>
 <li>减少了代码的冗余，提高了代码的复用性。</li>
 <li>便于功能的扩展。</li>
 <li>为之后多态性的使用，提供了前提。</li>
@@ -299,6 +299,165 @@
 <li>   父类中的结构，子类对象才可以考虑进行调用。</li>
 <li><strong>明确：虽然创建子类对象时，调用了父类的构造器，但是自始至终就创建过一个对象，即为new的子类对象。</strong></li>
 </ul>
+<h3 id="四种访问权限修饰符"><a href="#四种访问权限修饰符" class="headerlink" title="四种访问权限修饰符"></a>四种访问权限修饰符</h3><table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>类内部</th>
+<th>同一个包</th>
+<th>不同包的子类</th>
+<th>同一个工程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>default(缺省)</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td>public</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
+<h3 id="多态性"><a href="#多态性" class="headerlink" title="多态性"></a>多态性</h3><p>​    <strong>1.对象的多态性：父类的引用指向子类的对象;只适用于方法，不适用于属性</strong></p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">Person p</span> = new Man();<br></code></pre></td></tr></table></figure>
+<p>​    <strong>2.多态的使用（虚拟方法调用）：当调用子父类同名同参数的方法时，实际执行的是子类重写父类的方法</strong></p>
+<ul>
+<li><p>在编译期，只能调用父类中声明的方法。但在运行期，我们实际执行的是子类重写父类的方法。</p>
+</li>
+<li><p><strong>编译看左边，运行看右边</strong></p>
+<p><strong>3.多态性的使用前提：</strong></p>
+</li>
+</ul>
+<ol>
+<li>类的继承关系</li>
+<li>方法的重写</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-comment">//多态性的使用举例一：</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AnimalTest</span> </span>&#123;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>		<br>		AnimalTest test = <span class="hljs-keyword">new</span> AnimalTest();<br>		test.func(<span class="hljs-keyword">new</span> Dog());<br>		<br>		<br>		test.func(<span class="hljs-keyword">new</span> Cat());<br>	&#125;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(Animal animal)</span></span>&#123;<span class="hljs-comment">//Animal animal = new Dog();</span><br>		animal.eat();<br>		animal.shout();<br>		<br>		<span class="hljs-keyword">if</span>(animal <span class="hljs-keyword">instanceof</span> Dog)&#123;<br>			Dog d = (Dog)animal;<br>			d.watchDoor();<br>		&#125;<br>	&#125;<br>	<br><span class="hljs-comment">//	public void func(Dog dog)&#123;</span><br><span class="hljs-comment">//		dog.eat();</span><br><span class="hljs-comment">//		dog.shout();</span><br><span class="hljs-comment">//	&#125;</span><br><span class="hljs-comment">//	public void func(Cat cat)&#123;</span><br><span class="hljs-comment">//		cat.eat();</span><br><span class="hljs-comment">//		cat.shout();</span><br><span class="hljs-comment">//	&#125;</span><br>&#125;<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span></span>&#123;<br>	<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">eat</span><span class="hljs-params">()</span></span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;动物：进食&quot;</span>);<br>	&#125;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shout</span><span class="hljs-params">()</span></span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;动物：叫&quot;</span>);<br>	&#125;<br>	<br>	<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span></span>&#123;<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">eat</span><span class="hljs-params">()</span></span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;狗吃骨头&quot;</span>);<br>	&#125;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shout</span><span class="hljs-params">()</span></span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;汪！汪！汪！&quot;</span>);<br>	&#125;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">watchDoor</span><span class="hljs-params">()</span></span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;看门&quot;</span>);<br>	&#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span></span>&#123;<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">eat</span><span class="hljs-params">()</span></span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;猫吃鱼&quot;</span>);<br>	&#125;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shout</span><span class="hljs-params">()</span></span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;喵！喵！喵！&quot;</span>);<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">//举例二：</span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Order</span></span>&#123;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">method</span><span class="hljs-params">(Object obj)</span></span>&#123;<br>		<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">//举例三：</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Driver</span></span>&#123;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doData</span><span class="hljs-params">(Connection conn)</span></span>&#123;<span class="hljs-comment">//conn = new MySQlConnection(); / conn = new OracleConnection();</span><br>		<span class="hljs-comment">//规范的步骤去操作数据</span><br><span class="hljs-comment">//		conn.method1();</span><br><span class="hljs-comment">//		conn.method2();</span><br><span class="hljs-comment">//		conn.method3();</span><br>		<br>	&#125;<br>	<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>若子类重写了父类方法，就意味着子类里定义的方法彻底覆盖了父类里的同名方法，系统不可能把父类里的方法转移到子类中</li>
+<li>对于实例变量则不存在这样的现象，即使子类里定义了与父类完全相同的实例变量，这个实例变量依然不可能覆盖父类中定义的实例变量。</li>
+</ul>
+<h3 id="方法的重载和重写"><a href="#方法的重载和重写" class="headerlink" title="方法的重载和重写"></a>方法的重载和重写</h3><p>​    从编译和运行的角度看：重载是指允许存在多个同名方法，而这些方法的参数不同。编译器根据方法不同的参数表，对同名方法的名称做修饰。对于编译器而言，这些同名方法就成了不同的方法。它们的调用地址在编译期就绑定了。Java的重载是可以包括父类和子类的，即子类可以重载父类的同名不同参数的方法。</p>
+<p>​    所以对于重载而言，在方法调用之前，编译器就已经确定了所要调用的方法，这称为“早绑定”或者“静态绑定”。</p>
+<p>而对于多态而言，只有等到方法调用的那一刻，解释器才会确定所要调用的具体方法，这称为“晚绑定”或“动态绑定”。</p>
+<h3 id="instanceof关键字的使用"><a href="#instanceof关键字的使用" class="headerlink" title="instanceof关键字的使用"></a>instanceof关键字的使用</h3><p>​    a instanceof A：判断对象a是否是类A的实例。如果是返回true；如果不是，返回false。</p>
+<h3 id="Object类的使用"><a href="#Object类的使用" class="headerlink" title="Object类的使用"></a>Object类的使用</h3><ol>
+<li>Object类是所有Java类的根父类</li>
+<li>如果在类的声明中未使用extends关键字指明其父类，则默认父类为java.lang.object类。</li>
+<li>Object类（属性、方法）具有通用性。</li>
+<li>Object类只声明了一个空参构造器。</li>
+</ol>
+<h4 id="Object类的方法"><a href="#Object类的方法" class="headerlink" title="Object类的方法"></a>Object类的方法</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>equals()</td>
+<td>比较两个对象是否相等</td>
+</tr>
+<tr>
+<td>finalize()</td>
+<td>垃圾回收方法，垃圾收集器回收垃圾之前自动调用</td>
+</tr>
+<tr>
+<td>toString()</td>
+<td>对象打印时调用，返回类名和它的引用地址</td>
+</tr>
+<tr>
+<td>getClass()</td>
+<td></td>
+</tr>
+<tr>
+<td>hashCode()</td>
+<td>取得Hash码</td>
+</tr>
+</tbody></table>
+<h4 id="和equals的区别"><a href="#和equals的区别" class="headerlink" title="==和equals的区别"></a>==和equals的区别</h4><ol>
+<li>==既可以比较基本类型也可以比较引用类型，对于引用类型就是比较内存地址。</li>
+<li>equals它是属于Object类里面的方法，如果该方法没有被重写过默认也是==；我们可以看到String等类的equals方法是被重写过的，而且String类在日常开发中用的比较多，久而久之，形成了equals是比较值的错误观点。</li>
+<li>具体要看自定义类里有没有重写Object的equals方法来判断。</li>
+<li>通常情况下，重写equals方法，会比较类中的相应属性是否都相等。</li>
+</ol>
+<h3 id="单元测试的使用"><a href="#单元测试的使用" class="headerlink" title="单元测试的使用"></a>单元测试的使用</h3><ol>
+<li><p>创建Java类，进行单元测试。</p>
+<ul>
+<li>方法的权限是public</li>
+<li>提供公共的无参构造器</li>
+</ul>
+</li>
+<li><p>声明单元测试方法</p>
+<p>方法的权限是public，没有返回值，没有形参</p>
+</li>
+<li><p>此单元测试方法上需要声明注解：@Test，并在单元测试类中导入：import org.junit.Test</p>
+</li>
+<li><p>声明好方法后，就可以在方法体内测试相关的代码</p>
+</li>
+</ol>
+<h3 id="包装类的使用"><a href="#包装类的使用" class="headerlink" title="包装类的使用"></a>包装类的使用</h3><p>​    针对八种基本的数据类型定义相应的引用类型—包装类，有了类的特点就可以调用方法。</p>
+<table>
+<thead>
+<tr>
+<th>基本数据类型</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character</td>
+</tr>
+</tbody></table>
+<p><img src="/2022/01/29/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%AD%EF%BC%89/1.png" srcset="/img/loading.gif"></p>
 
             </div>
             <hr>
