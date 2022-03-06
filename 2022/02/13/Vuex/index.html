@@ -1,0 +1,628 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="chenjian">
+  <meta name="keywords" content="">
+  <title>Vuex - Fly</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":"truefooter","baidu":"a9e99669af27c2088ada70d9eeab9aaa","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>在云端易逍遥</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/img13.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Vuex">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-13 13:25" pubdate>
+        2022年2月13日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Vuex</h1>
+            
+            <div class="markdown-body">
+              <h2 id="官方解释"><a href="#官方解释" class="headerlink" title="官方解释"></a>官方解释</h2><p>Vuex 是一个专为 Vue.js 应用程序开发的<strong>状态管理模式</strong>。它采用集中式</p>
+<p>储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测</p>
+<p>方式发生变化。</p>
+<a id="more"></a>
+
+<h2 id="状态管理到底是什么？"><a href="#状态管理到底是什么？" class="headerlink" title="状态管理到底是什么？"></a>状态管理到底是什么？</h2><p>​    可以简单的将其看成把需要多个组件共享的变量全部存储在一个对象里面。然后，将这个对象放在顶层的Vue实例中，让其他组件可以使用。</p>
+<h2 id="管理什么状态呢"><a href="#管理什么状态呢" class="headerlink" title="管理什么状态呢?"></a>管理什么状态呢?</h2><p>比如用户的登录状态、用户名称、头像、地理位置信息等等。</p>
+<p>比如商品的收藏、购物车中的物品等等。</p>
+<p>这些状态信息，我们都可以放在统一的地方，对它进行保存和管理，而</p>
+<p>且它们还是响应式的</p>
+<h2 id="单界面的状态管理"><a href="#单界面的状态管理" class="headerlink" title="单界面的状态管理"></a>单界面的状态管理</h2><p><img src="/2022/02/13/Vuex/1.png" srcset="/img/loading.gif"></p>
+<ul>
+<li><p>State:状态信息</p>
+</li>
+<li><p>View:视图层，可以针对State的变化，显示不同的信息</p>
+</li>
+<li><p>Actions:这里的Actions主要是用户的各种操作：点击、输入等等，会导致状态的改变。</p>
+</li>
+<li><p>案例分析：计数器</p>
+</li>
+</ul>
+<h2 id="多界面状态管理"><a href="#多界面状态管理" class="headerlink" title="多界面状态管理"></a>多界面状态管理</h2><p><img src="/2022/02/13/Vuex/2.png" srcset="/img/loading.gif"></p>
+<p>如果你的项目里有很多页面（组件/视图），页面之间存在多级的嵌套关系，此时，这些页面假如都需要共享一个状态的时候，此时就会产生以下两个问题：</p>
+<ul>
+<li><p>多个视图依赖同一个状态</p>
+</li>
+<li><p>来自不同视图的行为需要变更同一个状态</p>
+<p>对于第一个问题，假如是多级嵌套关系，你可以使用父子组件传参进</p>
+</li>
+</ul>
+<p>解决，虽有些麻烦，但好在可以解决；对于兄弟组件或者关系更复杂</p>
+<p>件之间，就很难办了，虽然可以通过各种各样的办法解决，可实在很不</p>
+<p>优雅，而且等项目做大了，代码就会变成屎山，实在令人心烦。</p>
+<p>​    对于第二个问题，你可以通过父子组件直接引用，或者通过事件来变</p>
+<p>更或者同步状态的多份拷贝，这种模式很脆弱，往往使得代码难以维护</p>
+<ul>
+<li><strong>把各个组件都需要依赖的同一个状态抽取出来，在全局使用单例模式进行管理。</strong></li>
+<li><strong>在这种模式下，任何组件都可以直接访问到这个状态，或者当状态发生改变时，所有的组件都获得更新。</strong></li>
+</ul>
+<p>这就是 Vuex 背后的基本思想，借鉴了 Flux、Redux。与其他模式不同的</p>
+<p>是，Vuex 是专门为 Vue 设计的状态管理库，以利用 Vue.js 的细粒度数</p>
+<p>据响应机制来进行高效的状态更新。</p>
+<h2 id="Vuex的基本使用"><a href="#Vuex的基本使用" class="headerlink" title="Vuex的基本使用"></a>Vuex的基本使用</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install vuex <span class="hljs-comment">--save</span><br></code></pre></td></tr></table></figure>
+<h3 id="配置vuex"><a href="#配置vuex" class="headerlink" title="配置vuex"></a>配置vuex</h3><p>在src路径下创建store文件夹，然后创建index.js文件，文件内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><span class="hljs-keyword">import</span> Vuex <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span>;<br><br>Vue.use(Vuex);<br><br><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;<br>    state: &#123;<br>        <span class="hljs-comment">// 定义一个name，以供全局使用</span><br>        name: <span class="hljs-string">&#x27;张三&#x27;</span>,<br>        <span class="hljs-comment">// 定义一个number，以供全局使用</span><br>        number: <span class="hljs-number">0</span>,<br>        <span class="hljs-comment">// 定义一个list，以供全局使用</span><br>        list: [<br>            &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;111&#x27;</span> &#125;,<br>            &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;222&#x27;</span> &#125;,<br>            &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;333&#x27;</span> &#125;,<br>        ]<br>    &#125;,<br>&#125;);<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> store;<br><br></code></pre></td></tr></table></figure>
+<p>修改main.js：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App&#x27;</span>;<br><span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./router&#x27;</span>;<br><span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./store&#x27;</span>; <span class="hljs-comment">// 引入我们前面导出的store对象</span><br><br>Vue.config.productionTip = <span class="hljs-literal">false</span>;<br><br><span class="hljs-keyword">new</span> Vue(&#123;<br>    el: <span class="hljs-string">&#x27;#app&#x27;</span>,<br>    router,<br>    store, <span class="hljs-comment">// 把store对象添加到vue实例上</span><br>    components: &#123; App &#125;,<br>    template: <span class="hljs-string">&#x27;&lt;App/&gt;&#x27;</span><br>&#125;);<br><br></code></pre></td></tr></table></figure>
+<p>修改App.vue：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="javascript">        <span class="hljs-function"><span class="hljs-title">mounted</span>(<span class="hljs-params"></span>)</span> &#123;</span><br><span class="javascript">            <span class="hljs-comment">// 使用this.$store.state.XXX可以直接访问到仓库中的状态</span></span><br><span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.$store.state.name); </span><br>        &#125;<br>    &#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+<p>官方建议我们以上操作this.$store.state.XXX最好放在计算属性中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>    <span class="hljs-function"><span class="hljs-title">mounted</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.getName); <br>    &#125;,<br>    computed:&#123;<br>        <span class="hljs-function"><span class="hljs-title">getName</span>(<span class="hljs-params"></span>)</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.$store.state.name;<br>        &#125;<br>    &#125;,<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>每次都写this.$store.state.XXX让你感到厌烦，你实在不想写这</p>
+<p>个东西怎么办，当然有解决方案，就像下面这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script&gt;<br><span class="hljs-keyword">import</span> &#123; mapState &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span>; <span class="hljs-comment">// 从vuex中导入mapState</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>    <span class="hljs-function"><span class="hljs-title">mounted</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name);<br>    &#125;,<br>    computed: &#123;<br>        ...mapState([<span class="hljs-string">&#x27;name&#x27;</span>]), <span class="hljs-comment">// 经过解构后，自动就添加到了计算属性中，此时就可以直接像访问计算属性一样访问它</span><br>    &#125;,<br>&#125;<br>&lt;/script&gt;<br><br></code></pre></td></tr></table></figure>
+<p>可以在解构的时候给它赋别名，取外号，就像这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">...mapState(&#123; <span class="hljs-attr">aliasName</span>: <span class="hljs-string">&#x27;name&#x27;</span> &#125;),  <span class="hljs-comment">// 赋别名的话，这里接收对象，而不是数组</span><br></code></pre></td></tr></table></figure>
+<h2 id="小案例"><a href="#小案例" class="headerlink" title="小案例"></a>小案例</h2><p><img src="/2022/02/13/Vuex/3.png" srcset="/img/loading.gif"></p>
+<p><img src="/2022/02/13/Vuex/4.png" srcset="/img/loading.gif"></p>
+<p>通过this.$store.commit(‘mutation中方法’)来修改状态</p>
+<p>我们通过提交mutation的方式，而非直接改变store.state.count。</p>
+<p>这是因为Vuex可以更明确的追踪状态的变化，所以不要直接改变store.state.count的值。</p>
+<h2 id="Vuex核心概念"><a href="#Vuex核心概念" class="headerlink" title="Vuex核心概念"></a>Vuex核心概念</h2><ul>
+<li><h3 id="Getters"><a href="#Getters" class="headerlink" title="Getters"></a>Getters</h3><p>有时候，我们需要从store中获取一些state修饰后的状态，比如下面的Store中：</p>
+<p>获取学生年龄大于20的个数</p>
+<p><img src="/2022/02/13/Vuex/5.png" srcset="/img/loading.gif"></p>
+<p><img src="/2022/02/13/Vuex/6.png" srcset="/img/loading.gif"></p>
+<p>getters默认是不能传递参数的, 如果希望传递参数, 那么只能让getters本身返回另一个函数.</p>
+<p>比如上面的案例中,我们希望根据ID获取用户的信息</p>
+<p><img src="/2022/02/13/Vuex/7.png" srcset="/img/loading.gif"></p>
+</li>
+<li><h3 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h3><p>Vuex的store状态的更新唯一方式：<strong>提交Mutation</strong>。</p>
+<p>Mutation主要包括两部分：</p>
+<p>​    字符串的<strong>事件类型（type）</strong></p>
+<p>​    一个<strong>回调函数（handler）</strong>,该回调函数的第一个参数就是state。</p>
+<p><strong>mutation的定义方式：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">mutation: &#123;<br>	<span class="hljs-function"><span class="hljs-title">increment</span>(<span class="hljs-params">state</span>)</span>&#123;<br>	state.count++<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>通过mutation更新</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">increment: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-built_in">this</span>.$store.commit(<span class="hljs-string">&#x27;incement&#x27;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="Mutation传递参数"><a href="#Mutation传递参数" class="headerlink" title="Mutation传递参数"></a><strong>Mutation传递参数</strong></h4><p>参数被称为是mutation的载荷(Payload)</p>
+<p>Mutation中的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">decrement</span>(<span class="hljs-params">state,n</span>)</span>&#123;<br>	state.count -= n<br>&#125;<br><br>decrement:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-built_in">this</span>.$store.commit(<span class="hljs-string">&#x27;decrement&#x27;</span>,<span class="hljs-number">2</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="多个参数"><a href="#多个参数" class="headerlink" title="多个参数"></a>多个参数</h4><p>通常会以对象的形式传递, 也就是payload是一个对象.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">changeCount</span>(<span class="hljs-params">state,payload</span>)</span>&#123;<br>	state.count = payload.count<br>&#125;<br><br>changeCount: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-built_in">this</span>.$store.commit(<span class="hljs-string">&#x27;changeCount&#x27;</span>,&#123;<span class="hljs-attr">count</span>: <span class="hljs-number">0</span>&#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="另外一种提交方式"><a href="#另外一种提交方式" class="headerlink" title="另外一种提交方式"></a>另外一种提交方式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">this</span>.$store.commit(&#123;<br>	type: <span class="hljs-string">&#x27;changeCount&#x27;</span>,<br>	count: <span class="hljs-number">1200</span><br>&#125;)<br><br><span class="hljs-function"><span class="hljs-title">changeCount</span>(<span class="hljs-params">state,payload</span>)</span>&#123;<br>		state.count = payload.count<br>	&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="Mutation响应规则"><a href="#Mutation响应规则" class="headerlink" title="Mutation响应规则"></a><strong>Mutation响应规则</strong></h4><p>当给state中的对象添加新属性时, 使用下面的方式:</p>
+<p>方式一: 使用Vue.set(obj, ‘newProp’, 123)</p>
+<p>方式二: 用新对象给旧对象重新赋值</p>
+<p><img src="/2022/02/13/Vuex/8.png" srcset="/img/loading.gif"></p>
+<p><img src="/2022/02/13/Vuex/9.png" srcset="/img/loading.gif"></p>
+<p>Mutations里面的函数必须是同步操作，不能包含异步操作！</p>
+</li>
+<li><h3 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h3><p>Action类似于Mutation, 但是是用来代替Mutation进行异步操作的.</p>
+<p>Action的基本使用代码如下:</p>
+<p>​    context是和store对象具有相同方法和属性的对象.我们可以通过context去进行commit相关的操作, 也可以获取context.state等.但是注意, 这里它们并不是同一个对象.</p>
+<p><img src="/2022/02/13/Vuex/10.png" srcset="/img/loading.gif"></p>
+<p>在Vue组件中, 如果我们调用action中的方法, 那么就需要使用<strong>dispatch</strong></p>
+<p><img src="/2022/02/13/Vuex/11.png" srcset="/img/loading.gif"></p>
+<p>同样的, 也是支持传递payload</p>
+<p><img src="/2022/02/13/Vuex/12.png" srcset="/img/loading.gif"></p>
+<h4 id="Action返回的Promise"><a href="#Action返回的Promise" class="headerlink" title="Action返回的Promise"></a><strong>Action返回的Promise</strong></h4><p><img src="/2022/02/13/Vuex/13.png" srcset="/img/loading.gif"></p>
+<p><img src="/2022/02/13/Vuex/14.png" srcset="/img/loading.gif"></p>
+</li>
+<li><h3 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h3></li>
+</ul>
+<p>Vue使用单一状态树,那么也意味着很多状态都会交给Vuex来管理.当应用变得非常复杂时,store对象就有可能变得相当臃肿.为了解决这个问题, Vuex允许我们将store分割成模块(Module), 而每个模块拥有自己的state、mutations、actions、getters等.</p>
+<p><img src="/2022/02/13/Vuex/15.png" srcset="/img/loading.gif"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/09/vue-router/">
+                        <span class="hidden-mobile">vue-router</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "icBvU7spvG0iawymtNOxesQq-gzGzoHsz",
+          app_key: "Hc7KXd3ix4QaO9Pa5aPeKpAv",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a9e99669af27c2088ada70d9eeab9aaa";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
