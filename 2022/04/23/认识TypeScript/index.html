@@ -17,9 +17,25 @@
   <meta name="description" content="">
   <meta name="author" content="chenjian">
   <meta name="keywords" content="">
-  <title>分类 - 学习笔记 - Fly</title>
+  <title>认识TypeScript - Fly</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -141,14 +157,51 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/images/img3.jpg') no-repeat center center;
+         style="background: url('/images/img13.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="分类 - 学习笔记">
+            <span class="h2" id="subtitle" title="认识TypeScript">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-23 19:13" pubdate>
+        2022年4月23日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      58 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -161,106 +214,119 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 35 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2022</p>
-    
-    <a href="/2022/04/26/%E7%90%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">理解数据代理</span>
-      <time style="float: right;">04-26</time>
-    </a>
-  
-    
-    <a href="/2022/02/13/Vuex/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Vuex</span>
-      <time style="float: right;">02-13</time>
-    </a>
-  
-    
-    <a href="/2022/02/09/vue-router/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">vue-router</span>
-      <time style="float: right;">02-09</time>
-    </a>
-  
-    
-    <a href="/2022/02/08/Vuecli%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Vuecli基础</span>
-      <time style="float: right;">02-08</time>
-    </a>
-  
-    
-    <a href="/2022/02/08/Git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Git基础知识</span>
-      <time style="float: right;">02-08</time>
-    </a>
-  
-    
-    <a href="/2022/02/05/webpack%E8%AF%A6%E8%A7%A3/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">webpack详解</span>
-      <time style="float: right;">02-05</time>
-    </a>
-  
-    
-    <a href="/2022/02/05/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">前端模块化</span>
-      <time style="float: right;">02-05</time>
-    </a>
-  
-    
-    <a href="/2022/02/03/%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%913%EF%BC%88slot%EF%BC%89/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">组件化开发3（slot）</span>
-      <time style="float: right;">02-03</time>
-    </a>
-  
-    
-    <a href="/2022/02/03/%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%912/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">组件化开发2</span>
-      <time style="float: right;">02-03</time>
-    </a>
-  
-    
-    <a href="/2022/02/02/%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">组件化开发</span>
-      <time style="float: right;">02-02</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">认识TypeScript</h1>
+            
+            <div class="markdown-body">
+              <p>​    TypeScript是一种由微软开发的开源、跨平台的编程语言。它是JavaScript的超集，最终会被编译为JavaScript代码。</p>
+<a id="more"></a>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/page/2/">2</a><a class="page-number" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/page/3/">3</a><a class="page-number" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/page/4/">4</a><a class="extend next" rel="next" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/page/2/"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
+<h2 id="一、起步"><a href="#一、起步" class="headerlink" title="一、起步"></a>一、起步</h2><h3 id="1-安装TypeScript"><a href="#1-安装TypeScript" class="headerlink" title="1.安装TypeScript"></a>1.安装TypeScript</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">npm i -g typescript  <span class="hljs-regexp">//</span>安装<br>tsc -V               <span class="hljs-regexp">//</span>检查安装是否成功<br></code></pre></td></tr></table></figure>
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/TypeScript/">TypeScript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/26/%E7%90%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">理解数据代理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/30/Ajax%E4%B8%8EPromise/">
+                        <span class="hidden-mobile">Ajax与Promise</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "icBvU7spvG0iawymtNOxesQq-gzGzoHsz",
+          app_key: "Hc7KXd3ix4QaO9Pa5aPeKpAv",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -364,9 +430,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
